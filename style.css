@@ -1,2 +1,25 @@
 
 
+.navbar {
+  font-size: large;
+  font-family: "Arial Narrow";
+}
+
+h1 {
+  font-family: "Arial Narrow";
+  padding-left: 50px;
+  padding-top: 50px;
+}
+
+p {
+  font-family: Arial;
+  padding-left: 100px;
+  padding-top: 25px;
+  padding-right: 100px;
+  font-size: x-large;
+}
+
+.table {
+  padding-left: 200px;
+  padding-right: 200px;
+}

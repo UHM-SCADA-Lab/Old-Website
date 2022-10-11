@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div id="logo" style="background-color: darkgreen">
+  <img src="https://raw.githubusercontent.com/djaf6/scadawiki/main/SCADA.png" alt="" width="350" class="position-relative">
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Getting Started
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="https://discord.gg/ptPvf9etBh">SCADA Discord</a></li>
+            <li><a class="dropdown-item" href="#https://laulima.hawaii.edu/access/content/group/MAN.XLSEEX96mn.202310/Manuals/Inventory%20Sheet.pdf">Inventory Sheet</a></li>
+            <li><a class="dropdown-item" href="todolist.html">To-Do List</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Team</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Equipment</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Departments
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Linux System</a></li>
+            <li><a class="dropdown-item" href="#">Network</a></li>
+            <li><a class="dropdown-item" href="#">Radio Frequency</a></li>
+            <li><a class="dropdown-item" href="#">Webmaster</a></li>
+            <li><a class="dropdown-item" href="#">SEL</a></li>
+            <li><a class="dropdown-item" href="#">sFlow</a></li>
+            <li><a class="dropdown-item" href="#">SDN Controllers</a></li>
+            <li><a class="dropdown-item" href="#">Machine Learning</a></li>
+            <li><a class="dropdown-item" href="#">Panic Button</a></li>
+          </ul>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Legacy</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<container>
+<h1>To-Do List</h1>
+  <p> This page is for monitoring and prioritizing tasks for our SCADA system.
+    Please use dates, either when the task should be finished, or when the task was started.
+    Please try and keep this up-to-date as much as possible
+  </p>
+</container>
+
+<div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">SCADA System Task</th>
+    <th scope="col">Description</th>
+    <th scope="col">Date of Completion</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">Integrate SEL Components</th>
+    <td>Install 3505,451,311B to switch</td>
+    <td>3/24/2022</td>
+  </tr>
+  <tr>
+    <th scope="row">Modify Network to SDN</th>
+    <td>Choose an SDN network to use for the System</td>
+    <td>Date of Completion</td>
+  </tr>
+  <tr>
+    <th scope="row">Connect All Devices</th>
+    <td>Incorporate DL205 Security Device, and PI DNS Server</td>
+    <td>2/15/2022</td>
+  </tr>
+  <tr>
+    <th scope="row">Install Antenna</th>
+    <td>Gain Holmes Roof Access and install Gateway and AP antenna</td>
+    <td>Date of Completion</td>
+  </tr>
+  <tr>
+    <th scope="row">Move SCADA to side</th>
+    <td>SCADA System will be relocated and accessed wirelessly</td>
+    <td>Date of Completion</td>
+  </tr>
+  <tr>
+    <th scope="row">Put room-light sensor on the remote side of the network</th>
+    <td>Description</td>
+    <td>10/04/2022</td>
+  <tr>
+    <th scope="row">Make room-light sensor web-facing, Restful API</th>
+    <td>Description</td>
+    <td>10/04/2022</td>
+  </tr>
+  <tr>
+    <th scope="row">Stand up a knife-switch in the datacenter with a Restful API</th>
+    <td>Description</td>
+    <td>Date of Completion</td>
+  </tr>
+  <tr>
+    <th scope="row">Get sFlow going on the remote switch</th>
+    <td>Description</td>
+    <td>Date of Completion</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="d-flex" style="height: 100px;">
+  <div class="hr"></div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Network Admin Task</th>
+    <th scope="col">Description</th>
+    <th scope="col">Date of Completion</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">Switch Swap</th>
+    <td>Upgrade 2520G-8-PoE switch to a rate-limiting capable switch.</td>
+    <td>Fall 2022</td>
+  </tr>
+  <tr>
+    <th scope="row">Task</th>
+    <td>Description</td>
+    <td>Date of Completion</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="d-flex" style="height: 100px;">
+  <div class="hr"></div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Linux System Admin Task</th>
+    <th scope="col">Description</th>
+    <th scope="col">Date of Completion</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">Setup DNS Server</th>
+    <td>Get Bind9 and configure it to be the authoritative DNS server for the domain SCADA lab</td>
+    <td>7 March 2022</td>
+  </tr>
+  <tr>
+    <th scope="row">Setup DHCP reservation system</th>
+    <td>Description</td>
+    <td>Date of Completion</td>
+  </tr>
+  <tr>
+    <th scope="row">Wiki Update</th>
+    <td>Log the changes made in order to set up the DNS server</td>
+    <td>17 March 2022</td>
+  </tr>
+  <tr>
+    <th scope="row">Syslog Server</th>
+    <td>Description</td>
+    <td>Date of Completion</td>
+  </tr>
+  <tr>
+    <th scope="row">Audit System</th>
+    <td>Figure out where we left off and bring pi's up to date</td>
+    <td>04 October 2022</td>
+  </tr>
+  <tr>
+    <th scope="row">Master OS</th>
+    <td>	Create a master copy of the OS that has our configuration and updates</td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <th scope="row">Task</th>
+    <td>Description</td>
+    <td>Date of Completion</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="d-flex" style="height: 100px;">
+  <div class="hr"></div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Webmaster Task</th>
+    <th scope="col">Description</th>
+    <th scope="col">Date of Completion</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">Reorganize Wiki</th>
+    <td>Reorganize main page for easier access</td>
+    <td>4/19/2022</td>
+  </tr>
+  <tr>
+    <th scope="row">Clean up pages</th>
+    <td>Go through each page and make pages look cleaner</td>
+    <td>5/3/2022</td>
+  </tr>
+  <tr>
+    <th scope="row">Transfer Wiki Data</th>
+    <td>Transfer data from old wiki to new wiki</td>
+    <td>10/10/2022</td>
+  </tr>
+  <tr>
+    <th scope="row">Create web page for wiki</th>
+    <td>Create an actual web page for SCADA Lab</td>
+    <td>TBD</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="d-flex" style="height: 100px;">
+  <div class="hr"></div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">RF Task</th>
+    <th scope="col">Description</th>
+    <th scope="col">Date of Completion</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">Task</th>
+    <td>Description</td>
+    <td>Date of Completion</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="d-flex" style="height: 100px;">
+  <div class="hr"></div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">SEL Task</th>
+    <th scope="col">Description</th>
+    <th scope="col">Date of Completion</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">Task</th>
+    <td>Description</td>
+    <td>Date of Completion</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="d-flex" style="height: 100px;">
+  <div class="hr"></div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">sFlow Task</th>
+    <th scope="col">Description</th>
+    <th scope="col">Date of Completion</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">Task</th>
+    <td>Description</td>
+    <td>Date of Completion</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="d-flex" style="height: 100px;">
+  <div class="hr"></div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">SDN Task</th>
+    <th scope="col">Description</th>
+    <th scope="col">Date of Completion</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">RESTful API</th>
+    <td>Need a way to connect the data from the photocell sensor to the SDN controller Ryu</td>
+    <td>10/04/2022</td>
+  </tr>
+  <tr>
+    <th scope="row">Control Panel</th>
+    <td>Create a physical control panel to allow a human to access the live controller</td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <th scope="row">Tagged Traffic</th>
+    <td>Tagged traffic is not handled (well) by the current program, need to find a better solution</td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <th scope="row">Remove Flows</th>
+    <td>Create a solution to remove flows stored in the switch</td>
+    <td>9/20/2022</td>
+  </tr>
+  <tr>
+    <th scope="row">Parsing Packets</th>
+    <td>Parse more information from each flow request (packet) the controller encounters</td>
+    <td>TBD</td>
+  </tr>
+  <tr>
+    <th scope="row">Control Local Switch</th>
+    <td>Configure Ryu to control both remote and local switches</td>
+    <td>TBD</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="d-flex" style="height: 100px;">
+  <div class="hr"></div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">ML/NN Task</th>
+    <th scope="col">Description</th>
+    <th scope="col">Date of Completion</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">Task</th>
+    <td>Description</td>
+    <td>Date of Completion</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="d-flex" style="height: 100px;">
+  <div class="hr"></div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">SCADA Cam Task</th>
+    <th scope="col">Description</th>
+    <th scope="col">Date of Completion</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row">Get Camera Working</th>
+    <td>Research and figure out how to set up camera</td>
+    <td>4/5/2022</td>
+  </tr>
+  <tr>
+    <th scope="row">EntraNet</th>
+    <td>Verify that it can send video over the EntraNet wireless link</td>
+    <td>Date of Completion</td>
+  </tr>
+  <tr>
+    <th scope="row">Lab Computers</th>
+    <td>Download AMCREST View Software to SCADA Lab Computers</td>
+    <td>Date of Completion</td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
