@@ -2,17 +2,17 @@
 
 .navbar {
   font-size: large;
-  font-family: "Arial Narrow";
+  font-family: "Helvetica Neue";
 }
 
 h1 {
-  font-family: "Arial Narrow";
+  font-family: "Helvetica Neue";
   padding-left: 50px;
   padding-top: 50px;
 }
 
 p {
-  font-family: Arial;
+  font-family: "Helvetica Neue";
   padding-left: 100px;
   padding-top: 25px;
   padding-right: 100px;
