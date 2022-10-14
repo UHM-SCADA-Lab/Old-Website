@@ -11,21 +11,20 @@
 </head>
 <body>
 
-<div id="logo" style="background-color: darkgreen">
-  <img src="https://raw.githubusercontent.com/djaf6/scadawiki/main/SCADA.png" alt="" width="350" class="position-relative">
-</div>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg" style="background-color: darkgreen">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.html">Home</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="https://raw.githubusercontent.com/djaf6/scadawiki/main/SCADA1.png" alt="" width="200" class="d-inline-block align-text-top">
+      </a>
+    </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.html" style="color: white">Home</a>
+        </li>
         <li class="nav-item dropdown">
-          <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
             Getting Started
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -35,18 +34,18 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="team.html">Team</a>
+          <a class="nav-link active" aria-current="page" href="team.html" style="color: white">Team</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link active dropdown-toggle" href="equipment.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link active dropdown-toggle" href="equipment.html" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
             Equipment
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="equipment.html">Equipment List</a></li>
-            <li><a class="dropdown-item" href="#">Configuration</a></li>
+            <li><a class="dropdown-item" href="configuration.html">Configuration</a></li>
           </ul>
         <li class="nav-item dropdown">
-          <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
             Departments
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -61,13 +60,9 @@
             <li><a class="dropdown-item" href="#">Panic Button</a></li>
           </ul>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Legacy</a>
+          <a class="nav-link active" aria-current="page" href="#" style="color: white">Legacy</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>
@@ -81,6 +76,7 @@
     <thead>
     <tr>
       <th scope="col">Device</th>
+      <th scope="col">Page</th>
       <th scope="col">Location</th>
       <th scope="col">Input Voltage</th>
       <th scope="col">AC</th>
@@ -102,6 +98,7 @@
     <tbody>
     <tr>
       <th scope="row">entraNET Access Point</th>
+      <td><a href="#" class="link-secondary">More Information</a></td>
       <td>HQ</td>
       <td>6-30V</td>
       <td></td>
@@ -121,6 +118,7 @@
     </tr>
     <tr>
       <th scope="row">Mean Well PS</th>
+      <td><a href="#" class="link-secondary">More Information</a></td>
       <td>HQ & SUB</td>
       <td></td>
       <td></td>
@@ -140,6 +138,7 @@
     </tr>
     <tr>
       <th scope="row">entraNET Serial Remote</th>
+      <td><a href="#" class="link-secondary">More Information</a></td>
       <td>SUB</td>
       <td>6-30V</td>
       <td></td>
@@ -159,6 +158,7 @@
     </tr>
     <tr>
       <th scope="row">entraNET Dual Remote</th>
+      <td><a href="#" class="link-secondary">More Information</a></td>
       <td>SUB</td>
       <td>6-30V</td>
       <td></td>
@@ -178,6 +178,7 @@
     </tr>
     <tr>
       <th scope="row">SEL 3505</th>
+      <td><a href="#" class="link-secondary">More Information</a></td>
       <td>SUB</td>
       <td>12-24V</td>
       <td></td>
@@ -197,6 +198,7 @@
     </tr>
     <tr>
       <th scope="row">SEL 311</th>
+      <td><a href="#" class="link-secondary">More Information</a></td>
       <td>SUB</td>
       <td>24-250V</td>
       <td>x</td>
@@ -216,6 +218,7 @@
     </tr>
     <tr>
       <th scope="row">SEL 451</th>
+      <td><a href="#" class="link-secondary">More Information</a></td>
       <td>SUB</td>
       <td>110-120V</td>
       <td>x</td>
@@ -235,6 +238,7 @@
     </tr>
     <tr>
       <th scope="row">Direct Logic 205 Koyo</th>
+      <td><a href="#" class="link-secondary">More Information</a></td>
       <td>SUB</td>
       <td>100-240V</td>
       <td>x</td>
@@ -254,6 +258,7 @@
     </tr>
     <tr>
       <th scope="row">H2-DM1E</th>
+      <td><a href="#" class="link-secondary">More Information</a></td>
       <td>SUB</td>
       <td>24V</td>
       <td></td>
@@ -273,6 +278,7 @@
     </tr>
     <tr>
       <th scope="row">D2-16ND3-2</th>
+      <td><a href="#" class="link-secondary">More Information</a></td>
       <td>SUB</td>
       <td>24V</td>
       <td></td>
@@ -292,6 +298,7 @@
     </tr>
     <tr>
       <th scope="row">F2-16TD2p</th>
+      <td><a href="#" class="link-secondary">More Information</a></td>
       <td>SUB</td>
       <td>24V</td>
       <td></td>
@@ -311,6 +318,7 @@
     </tr>
     <tr>
       <th scope="row">SEL 2740S</th>
+      <td><a href="#" class="link-secondary">More Information</a></td>
       <td>HQ</td>
       <td></td>
       <td></td>
@@ -334,14 +342,13 @@
 
 <div>
 
-</div>
   <ol class="list-group list-group-numbered">
     <h2>Local (Holmes 450)</h2>
     <li class="list-group-item">entraNET Access Point</li>
     <li class="list-group-item">MeanWell PS</li>
     <li class="list-group-item">Raspberry PIs</li>
   </ol>
-<ol class="list-group list-group-numbered">
+  <ol class="list-group list-group-numbered">
   <h2>Remote (ITC Datacenter)</h2>
   <li class="list-group-item">entraNET Serial Remote</li>
   <li class="list-group-item">NovaTech OrionLXm</li>
@@ -349,6 +356,22 @@
   <li class="list-group-item">SEL 311</li>
   <li class="list-group-item">SEL 451</li>
   <li class="list-group-item">Direct Logic 205 Koyo</li>
+    <ol>
+      <li class="list-group-item">H2-DM1E</li>
+      <li class="list-group-item">D2-16ND3-2</li>
+      <li class="list-group-item">D2-16ND3-2</li>
+      <li class="list-group-item">F2-16TD2p</li>
+      <li class="list-group-item">F2-16TD2p</li>
+      <li class="list-group-item">Empty</li>
+      <li class="list-group-item">Empty</li>
+      <li class="list-group-item">Empty</li>
+      <li class="list-group-item">Empty</li>
+    </ol>
+  <li class="list-group-item">Mean Well PS</li>
+  <li class="list-group-item"><a href="#" class="link-dark">SCADA Cam</a></li>
 </ol>
+
+</div>
+
 </body>
 </html>
