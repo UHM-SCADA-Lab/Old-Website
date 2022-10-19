@@ -1,5 +1,3 @@
-
-
 .navbar {
   font-size: large;
   font-family: "Helvetica Neue";
@@ -9,6 +7,7 @@ h1 {
   font-family: "Helvetica Neue";
   padding-left: 50px;
   padding-top: 50px;
+  padding-bottom: 20px;
 }
 
 h2 {
@@ -40,4 +39,16 @@ p {
   padding-left: 200px;
   padding-right: 200px;
   padding-bottom: 100px;
+}
+
+.my-image-div{
+  padding-bottom: 100px;
+  height: 300px;
+}
+
+#welcome {
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-bottom: 100px;
+  font-size: large;
 }
