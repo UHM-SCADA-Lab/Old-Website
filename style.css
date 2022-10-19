@@ -49,8 +49,8 @@ p {
 #welcome {
   padding-left: 200px;
   padding-right: 200px;
-  padding-bottom: 100px;
-  font-size: large;
+  padding-bottom: 25px;
+  font-size: medium;
 }
 
 .uhlogo {
@@ -61,4 +61,23 @@ p {
 
 .footer-list {
   padding-right: 15px;
+}
+
+.department-grid {
+  padding-top: 50px;
+}
+
+.grid-space {
+  padding-bottom: 50px;
+  font-size: large;
+}
+
+.badge {
+  position: relative;
+  top:225px;
+  text-align: center;
+  border-radius: 30px 30px 30px 30px;
+  color: white;
+  padding:5px 10px;
+  font-size:40px;
 }
