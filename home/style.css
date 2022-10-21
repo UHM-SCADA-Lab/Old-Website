@@ -1,6 +1,7 @@
 .navbar {
   font-size: large;
   font-family: "Helvetica Neue";
+  vertical-align: bottom;
 }
 
 h1 {
@@ -8,6 +9,7 @@ h1 {
   padding-left: 50px;
   padding-top: 50px;
   padding-bottom: 20px;
+  color: #024731;
 }
 
 h2 {
@@ -60,7 +62,8 @@ p {
 }
 
 .footer-list {
-  padding-right: 15px;
+  padding-right: 10px;
+  font-size: small;
 }
 
 .department-grid {
@@ -80,4 +83,15 @@ p {
   color: white;
   padding:5px 10px;
   font-size:40px;
+}
+
+.carousel {
+  align-items: center;
+  width:600px;
+  height: 400px;
+  margin: auto;
+}
+
+#footer {
+  padding-left: 30%;
 }
