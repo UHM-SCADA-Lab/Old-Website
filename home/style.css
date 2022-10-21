@@ -1,5 +1,5 @@
 .navbar {
-  font-size: large;
+  font-size: medium;
   font-family: "Helvetica Neue";
   vertical-align: bottom;
 }
@@ -34,7 +34,7 @@ p {
 }
 
 .logo {
-  margin-top: 25px;
+  padding-left: 100%;
 }
 
 .list {
