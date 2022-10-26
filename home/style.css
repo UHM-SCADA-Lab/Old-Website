@@ -16,7 +16,7 @@ h2 {
   font-family: "Helvetica Neue";
   padding-left: 100px;
   padding-top: 50px;
-  font-size: x-large;
+  font-size: large;
 }
 
 p {
@@ -24,13 +24,12 @@ p {
   padding-left: 100px;
   padding-top: 25px;
   padding-right: 100px;
-  font-size: x-large;
+  font-size: large;
 }
 
 .table {
-  padding-left: 200px;
-  padding-right: 200px;
-  padding-bottom: 100px;
+  padding: 20px 200px;
+  font-size: small;
 }
 
 .logo {
@@ -90,4 +89,12 @@ p {
   width:600px;
   height: 400px;
   margin: auto;
+}
+.list {
+  padding-left: 100px;
+}
+
+.table-pi {
+  padding: 20px 75px;
+  font-size: small;
 }
