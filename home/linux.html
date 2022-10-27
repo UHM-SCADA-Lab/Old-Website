@@ -58,6 +58,31 @@
 
 <hr class="bg border-1 border-top border-dark">
 
+<!-- Linux Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container linux-nav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item button-nav">
+          <button class="btn btn-sm btn-outline-secondary" type="button"><a class="nav-link active" aria-current="page" href="../home/DepartmentPages/Linux/pi-table.html">Raspberry Pi Inventory Table</a></button>
+        </li>
+        <li class="nav-item button-nav">
+          <button class="btn btn-sm btn-outline-secondary" type="button"><a class="nav-link active" href="../home/DepartmentPages/Linux/pi-bringup-checksheet.html">Pi Bring Up Check Sheet</a></button>
+        </li>
+        <li class="nav-item button-nav">
+          <button class="btn btn-sm btn-outline-secondary" type="button"><a class="nav-link active" href="#">Multihoming Raspberry Pi</a></button>
+        </li>
+        <li class="nav-item button-nav">
+          <button class="btn btn-sm btn-outline-secondary" type="button"><a class="nav-link active" href="#">Standing Up DHCP Server</a></button>
+        </li>
+        <li class="nav-item button-nav">
+          <button class="btn btn-sm btn-outline-secondary" type="button"><a class="nav-link active" href="#">Standing Up DNS Server</a></button>
+        </li>
+        <li class="nav-item button-nav">
+          <button class="btn btn-sm btn-outline-secondary" type="button"><a class="nav-link active" href="#">Miscellaneous</a></button>
+        </li>
+      </ul>
+  </div>
+</nav>
 <!-- Important Information and Tasks -->
 <div class="container">
   <div class="row">
@@ -103,43 +128,44 @@
   </div>
 </div>
 
-<hr class="bg border-1 border-top border-dark">
-
-<!-- Raspberry Pi Inventory Table -->
-<h2>Raspberry Pi Inventory Table</h2>
-<a class="link link-dark" href="../home/DepartmentPages/Linux/pi-table.html">Click here!</a>
-
 <!-- Useful Resources and Commands(Important linux commands) -->
-<div>
-  <h2>Useful Commands and Resources</h2>
-    <ul class="list">
-      <li>Note: Commands prefixed with # require root access, and commands prefixed with $ do not require root access.</li>
-      <li>$ sudo bash: gets root access</li>
-      <li># sudo bash: stacks a new instance of bash. When you # exit will jump back to previous instance</li>
-      <li>$ sudo shutdown -r 0: shutdown then reboots.</li>
-      <li>$ sudo shutdown -h 0: halts all processes and shuts down.</li>
-      <li>$ cat /path/to/file: prints file contents to console.</li>
-      <li>$ ifconfig : prints out network interfaces. (IPs assigned to PI, VLAN membership, MAC address, etc.)</li>
-      <li>$ arp -a: prints out devices on network using ARP (Address resolution protocol).</li>
-      <li>$ vim /path/to/file: edits file using Vim, a console-based text editor.</li>
-      <ul>
-        <li>$ vimtutor: program that teaches the basics of how to use Vim.</li>
-      </ul>
-      <li>$ function > textfile.txt stores function's console output to a textfile textfile.txt</li>
+<h2>Useful Commands and Resources</h2>
+<div class="list">
+  <ul>
+    <li>Note: Commands prefixed with # require root access, and commands prefixed with $ do not require root access.</li>
+    <li>$ sudo bash: gets root access</li>
+    <li># sudo bash: stacks a new instance of bash. When you # exit will jump back to previous instance</li>
+    <li>$ sudo shutdown -r 0: shutdown then reboots.</li>
+    <li>$ sudo shutdown -h 0: halts all processes and shuts down.</li>
+    <li>$ cat /path/to/file: prints file contents to console.</li>
+    <li>$ ifconfig : prints out network interfaces. (IPs assigned to PI, VLAN membership, MAC address, etc.)</li>
+    <li>$ arp -a: prints out devices on network using ARP (Address resolution protocol).</li>
+    <li>$ vim /path/to/file: edits file using Vim, a console-based text editor.</li>
+    <ul>
+      <li>$ vimtutor: program that teaches the basics of how to use Vim.</li>
     </ul>
+    <li>$ function > textfile.txt stores function's console output to a textfile textfile.txt</li>
+  </ul>
   <ul class="list">
     <li><a href="https://www.raspberrypi.com/">Raspberry Pi Homepage</a></li>
     <li><a href="https://www.raspberrypi.com/documentation/">Raspberry Pi Documentation</a></li>
   </ul>
 </div>
 
-<hr class="bg border-1 border-top border-dark">
-
-<!-- Pi Site Checksheet(Setting up Pi) -->
-<h2>Raspberry Pi Bring Up Checksheet</h2>
-<a class="link link-dark" href="../home/DepartmentPages/Linux/pi-bringup-checksheet.html">Click here!</a>
-
 <!-- Setting Static IP - THIS NEEDS TO BE UPDATED -->
+<h2>Setting Static IP - THIS NEEDS TO BE UPDATED</h2>
+<div class="list">
+  <ul>
+    <li>navigate to /etc/network</li>
+    <li>open and edit interfaces file</li>
+    <li>add the following</li>
+    <li>allow-hotplug eth0</li>
+    <li>iface eth0 inet static</li>
+    <li>address set static here</li>
+    <li>netmask 255.255.255.0</li>
+    <li>gateway 10.1.1.1</li>
+  </ul>
+</div>
 
 <!-- Multihoming Raspberry Pi(For setting up VLAN) -->
 

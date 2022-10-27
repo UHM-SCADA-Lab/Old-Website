@@ -104,3 +104,11 @@ p {
   padding-left: 100px;
   padding-top: 50px;
 }
+
+.button-nav {
+  padding-right: 10px;
+}
+
+.linux-nav {
+  align-items: center;
+}
