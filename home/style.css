@@ -92,9 +92,15 @@ p {
 }
 .list {
   padding-left: 100px;
+  padding-bottom: 15px;
 }
 
 .table-pi {
   padding: 20px 75px;
   font-size: small;
+}
+
+.link {
+  padding-left: 100px;
+  padding-top: 50px;
 }
