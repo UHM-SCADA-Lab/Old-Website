@@ -15,5 +15,111 @@
 <a class="link" href="../../../home/linux.html">Back to Linux Page</a>
 <hr class="bg border-1 border-top border-dark">
 
+<h2>Using systemd</h2>
+<div class="list">
+  <ul>
+    <li>Followed this <a href="https://www.golinuxcloud.com/run-script-at-startup-boot-without-cron-linux/">tutorial</a> and this <a href="https://stackoverflow.com/questions/35641414/python-import-of-local-module-failing-when-run-as-systemd-systemctl-service">stack overflow question.</a></li>
+    <li>Instructions:</li>
+    <li>Create a .sh script. Example shown below is located at ~/startup_script.sh and launches two python programs:</li>
+  </ul>
+  <pre class="bg-light code-box">
+        <code>
+            <!-- Lines of code starts -->
+            <p class="code">
+            #!/bin/bash
+            python3 /home/pi/gpio/LightSensor.py &
+            python3 /home/pi/rest_api/rest927.py &
+            </p>
+          <!-- Lines of code ends -->
+        </code>
+    </pre>
+  <ul>
+    <li>Provide executable permission to the script: $ sudo chmod u+x /path/to/startup_script.sh</li>
+    <li>Create a new systemd service file. Example shown below is a created service named Photo.service:</li>
+  </ul>
+  <pre class="bg-light code-box">
+        <code>
+            <!-- Lines of code starts -->
+            <p class="code">
+            [Unit]
+            Description=Run script at startup after network becomes reachable
+            After=network-online.target
+
+            [Service]
+            Type=idle
+            User=pi
+            RemainAfterExit=yes
+            ExecStart=/home/pi/startup_script.sh
+            TimeoutStartSec=0
+
+            [Install]
+            WantedBy=default.target
+            </p>
+          <!-- Lines of code ends -->
+        </code>
+    </pre>
+  <ul>
+    <li>Execute the following commands to make sure the service is called on startup</li>
+    <ul>
+      <li>$ sudo systemctl daemon-reload</li>
+      <li>$ sudo systemctl enable Photo.service</li>
+    </ul>
+    <li>To check status of script</li>
+    <ul>
+      <li>$ systemctl status Photo.service</li>
+    </ul>
+  </ul>
+</div>
+
+<h2>Using rc.local - DON'T USE - preserved for documentation</h2>
+<div class="list">
+  <ul>
+    <li>This kinda works, but isn't as applicable as using systemd as shown above. This is an outdated method.</li>
+    <li>Fails as you cannot control when the program runs, (runs before dependencies)</li>
+    <li>Followed <a href="https://learn.sparkfun.com/tutorials/how-to-run-a-raspberry-pi-program-on-startup#method-1-rclocal">this tutorial, method 1 (rc.local)</a></li>
+    <li>Instructions:</li>
+    <ol>
+      <li>Edit the file rc.local: $ sudo vim /etc/rc.local</li>
+      <li>Enter the (command line) command you would like to run on start just before the last line (the exit 0 line). Example from the Photocell light sensor Pi shown below.</li>
+      <li>WARNING: Make sure you add the '&' character at the end of the command. This makes it so the command runs in the background. If you do not do this, you might soft lock the Pi.</li>
+      <li>If you then restart the Pi and the program has apparently ran without soft locking the Pi, you are finished. If not, follow the instructions written after the example to fix the Pi.</li>
+    </ol>
+  </ul>
+  <pre class="bg-light code-box">
+        <code>
+            <!-- Lines of code starts -->
+            <p class="code">
+              # Print the IP address
+              _IP=$(hostname -I) || true
+              if [ "$_IP" ]; then
+               printf "My IP address is %sn" "$_IP"
+              fi
+
+              python3 /home/pi/gpio/LightSensor.py &
+
+              exit 0
+            </p>
+          <!-- Lines of code ends -->
+        </code>
+    </pre>
+
+
+</div>
+
+<h2>Fixing rc.local Softlock</h2>
+<div class="list">
+  <ul>
+    <li>If this happens to you, don't worry!</li>
+    <li>Instructions:</li>
+    <ol>
+      <li>You will need to shutdown the Pi, then take out the SD card from the Pi.</li>
+      <li>Put the SD card into the SD card writer used for burning OS images.</li>
+      <li>Plug the SD card writer into another computer (any Raspberry Pi works!)</li>
+      <li>On the another computer, open the file in vim text editor: sudo vim /media/pi/rootfs/etc/rc.local</li>
+      <li>Fix what you messed up earlier.</li>
+      <li>Once done, properly eject the SD card and it should be good to be plugged into the original Pi.</li>
+    </ol>
+  </ul>
+</div>
 </body>
 </html>
