@@ -15,7 +15,7 @@ h1 {
 h2 {
   font-family: "Helvetica Neue";
   padding-left: 100px;
-  padding-top: 50px;
+  padding-top: 10px;
   font-size: large;
 }
 
@@ -67,6 +67,7 @@ p {
 
 .department-grid {
   padding-top: 50px;
+
 }
 
 .grid-space {
@@ -76,12 +77,10 @@ p {
 
 .badge {
   position: relative;
-  top:225px;
+  top: 320px;
   text-align: center;
-  border-radius: 30px 30px 30px 30px;
   color: white;
-  padding:5px 10px;
-  font-size:40px;
+  font-size: 30px;
 }
 
 .carousel {
@@ -92,7 +91,7 @@ p {
 }
 .list {
   padding-left: 100px;
-  padding-bottom: 15px;
+  padding-bottom: 0px;
 }
 
 .table-pi {
@@ -111,4 +110,12 @@ p {
 
 .linux-nav {
   align-items: center;
+}
+.code {
+  font-size: medium;
+  margin-top: 5px;
+}
+
+.code-box {
+  margin: 10px 10px;
 }
