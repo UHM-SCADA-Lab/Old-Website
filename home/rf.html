@@ -18,8 +18,57 @@
 </head>
 <body>
 
+<!-- Navbar -->
 <div id="navbar"></div>
-<!--Remaining section-->
+
+<!-- Title -->
+<div>
+  <h1>Radio Frequency</h1>
+</div>
+
+<!-- Team Positions -->
+<div class="table table-responsive">
+  <table class="table table-sm table-striped table-bordered">
+    <thead>
+    <tr>
+      <th scope="col" colspan="2">Team</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td>Position</td>
+    </tr>
+    <tr>
+      <th scope="row">Bodie</th>
+      <td>Lead</td>
+    </tr>
+    <tr>
+      <th scope="row">Cameron</th>
+      <td>Assistant</td>
+    </tr>
+    <tr>
+      <th scope="row">Justin</th>
+      <td>Assistant</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="bg border-1 border-top border-dark">
+
+<!-- Legacy Equipment -->
+<h2>Legacy Equipment</h2>
+<h2><a href="DepartmentPages/Rf/entranet-serial-remote.html">MDS entraNET 900 System Entranet Serial Remote</a></h2>
+<div class="text-center">
+  <img src="DepartmentPages/Rf/Serial%20Remote.png"/>
+</div>
+<div>
+  <p>When Starting in fall 2022 the SCADA Lab was using the above MDS extender for radio tranmissions. The main problem that was happening was the connection was unstable. It would lose connection and not be able to re establish the connection on its own. To re-establish the connection we tried unplugging and re-plugging in the power, ethernet, and antenna cables on the control side MDS which did nothing. We repeated this on the production side and power cylcing work to re-establish the connection. So it was concluded the problem is on the production side MDS box. We were able to induce the problem by pinging the control side switch (10.1.1.10) from Qtpi-3(10.1.1.132) with a large packet using the command: ping 10.1.1.10 -s 10000.</p>
+  <p>In wireshark we saw the ARP table query: who has 10.1.1.10 tell 10.1.1.132. After about a second of no response QTpi-3 would try again: who has 10.1.1.10 tell 10.1.1.132. After around 3 Queries the OS of QTpi-3 would send the message Destination Host Unreachable.</p>
+</div>
+
+<!-- Footer -->
 <div id="footer"></div>
 
 </body>
