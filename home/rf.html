@@ -61,7 +61,7 @@
 <h2>Legacy Equipment</h2>
 <h2><a href="DepartmentPages/Rf/entranet-serial-remote.html">MDS entraNET 900 System Entranet Serial Remote</a></h2>
 <div class="text-center">
-  <img src="DepartmentPages/Rf/Serial%20Remote.png"/>
+  <img src="DepartmentPages/Rf/Serial%20Remote.png" alt=""/>
 </div>
 <div>
   <p>When Starting in fall 2022 the SCADA Lab was using the above MDS extender for radio tranmissions. The main problem that was happening was the connection was unstable. It would lose connection and not be able to re establish the connection on its own. To re-establish the connection we tried unplugging and re-plugging in the power, ethernet, and antenna cables on the control side MDS which did nothing. We repeated this on the production side and power cylcing work to re-establish the connection. So it was concluded the problem is on the production side MDS box. We were able to induce the problem by pinging the control side switch (10.1.1.10) from Qtpi-3(10.1.1.132) with a large packet using the command: ping 10.1.1.10 -s 10000.</p>
