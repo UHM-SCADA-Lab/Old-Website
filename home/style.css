@@ -16,8 +16,14 @@ h2 {
   font-family: "Helvetica Neue";
   padding-left: 100px;
   padding-top: 10px;
-  font-size: large;
 }
+
+h3, h4, h5, h6 {
+  font-family: "Helvetica Neue";
+  padding-left: 100px;
+  padding-top: 10px;
+}
+
 
 p {
   font-family: "Helvetica Neue";
@@ -118,4 +124,8 @@ p {
 
 .code-box {
   margin: 10px 10px;
+}
+
+pre {
+  background: hsl(30,80%,90%);
 }
