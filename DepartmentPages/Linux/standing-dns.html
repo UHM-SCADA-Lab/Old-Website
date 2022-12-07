@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Standing Up DNS Server</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../style.css"/>
+</head>
+<body>
+
+<h1>Standing Up DNS Server</h1>
+<a class="link" href="../../linux.html">Back to Linux Page</a>
+<hr class="bg border-1 border-top border-dark">
+
+<div class="list">
+  <ul>
+    <li>Useful commands:</li>
+    <ul>
+      <li>sudo apt install bind9</li>
+      <li>systemctl status isc-dhcp.server.service: checks if DHCP server is running</li>
+      <li>systemctl status bind9: checks if bind9 is running</li>
+      <li>systemctl reenable bind9: updates the symlink?</li>
+      <li>systemctl restart bind9: restarts bind9</li>
+      <li>named-checkzone scada.lab db.scada.lab: verifies the validity of zone files before resetting the configuration</li>
+      <li>named-checkconf -z: verifies the syntax of the configuration files for Bind9</li>
+      <li>dig @< IP of DNS server> < target name>: searches the DNS server specified and relays back lots of info. Optionally add a target name to get specific info on that domain.</li>
+    </ul>
+  </ul>
+  <h2>Setting up zones</h2>
+  <ol>
+    <li>add zone information to configuration file. (I view this as defining the zone)</li>
+    <ol>
+      <li><img src="dns_zone_configuration_example.png" alt=""/></li>
+    </ol>
+    <li>after saving the change, restart the service. Run systemctl reload bind9.</li>
+    <li>create db.< zone name> file.</li>
+    <ol>
+      <li><img src="dns_db_file_example.png" alt=""/></li>
+      <li>The bottom of the file is the DNS records. The format of a record: hostname < tab> class < tab> DNS record type < tab> value.</li>
+    </ol>
+    <li>restart the rndc. Run sudo rndc reload.</li>
+    <li>check the DNS server is running properly.</li>
+    <li><a href="https://serverspace.io/support/help/bind9-as-a-primary-dns-server-on-ubuntu/">Tutorial(Configure Bind9 as Primary Server)</a></li>
+    <li><a href="https://wiki.debian.org/Bind9#Introduction">Tutorial (Bind9)</a></li>
+  </ol>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Raspberry Pi Inventory Table</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../style.css"/>
+</head>
+<body>
+
+<h1>Raspberry Pi Inventory Table</h1>
+<a class="link" href="../../linux.html">Back to Linux Page</a>
+<hr class="bg border-1 border-top border-dark">
+<!-- Raspberry Pi Inventory Table -->
+<div class="table-pi">
+  <table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+      <th scope="col">List</th>
+      <th scope="col">Name</th>
+      <th scope="col">Host Name</th>
+      <th scope="col">Username</th>
+      <th scope="col">Password</th>
+      <th scope="col">IP Address</th>
+      <th scope="col">MAC Address</th>
+      <th scope="col">OS Type</th>
+      <th scope="col">Team</th>
+      <th scope="col">Location</th>
+      <th scope="col">Last Updated</th>
+      <th scope="col">Other Notes</th>
+      <th scope="col">Software Installed</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>PI-11</td>
+      <td>QTpi-2</td>
+      <td>pi</td>
+      <td>Sc@d@21!</td>
+      <td>
+        <ul>
+          <li>VLAN 1:10.1.1.124</li>
+        </ul>
+      </td>
+      <td>b8:27:eb:68:d0:5f</td>
+      <td>GUI</td>
+      <td>NET</td>
+      <td>Local</td>
+      <td>September 2022</td>
+      <td>(Local) Monitoring Network Traffic (via Wireshark)</td>
+      <td>dnsutils vlan vim net-tools nmap wireshark</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>PI-05</td>
+      <td>QTpi-3</td>
+      <td>pi</td>
+      <td>Sc@d@21!</td>
+      <td>
+        <ul>
+          <li>VLAN 1:10.1.1.157</li>
+        </ul>
+      </td>
+      <td>b8:27:eb:80:46:ae</td>
+      <td>GUI</td>
+      <td>NET</td>
+      <td>Remote</td>
+      <td>September 2022</td>
+      <td>(Remote) Monitoring Network Traffic (via Wireshark)</td>
+      <td>dnsutils vlan vim net-tools nmap wireshark</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>PI-12</td>
+      <td>QTpi-4</td>
+      <td>pi</td>
+      <td>Sc@d@21!</td>
+      <td>
+        <ul>
+          <li>VLAN 3: 10.1.44.4</li>
+        </ul>
+      </td>
+      <td>b8:27:eb:3c:2d:60</td>
+      <td>Console</td>
+      <td>SDN</td>
+      <td>Remote</td>
+      <td>September 2022</td>
+      <td>SDN Test</td>
+      <td>dnsutils vlan vim net-tools nmap wireshark</td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>PI-16</td>
+      <td>QTpi-5</td>
+      <td>pi</td>
+      <td>Sc@d@21!</td>
+      <td>
+        <ul>
+          <li>VLAN 3: 10.1.44.3</li>
+        </ul>
+      </td>
+      <td>b8:27:eb:b1:14:18</td>
+      <td>Console</td>
+      <td>SDN</td>
+      <td>Remote</td>
+      <td>September 2022</td>
+      <td>SDN Test</td>
+      <td>dnsutils vlan vim net-tools nmap wireshark</td>
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <td>PI-07</td>
+      <td>Photo</td>
+      <td>pi</td>
+      <td>Sc@d@21!</td>
+      <td>
+        <ul>
+          <li>VLAN 2: 10.1.88.5</li>
+        </ul>
+      </td>
+      <td>b8:27:eb:c5:9d:ba</td>
+      <td>Console</td>
+      <td>SDN</td>
+      <td>Remote</td>
+      <td>September 2022</td>
+      <td>Photocell Pi</td>
+      <td>dnsutils vlan vim net-tools nmap wireshark, python 3, pip,flask(X)</td>
+    </tr>
+    <tr>
+      <th scope="row">6</th>
+      <td>PI-14</td>
+      <td>Servers</td>
+      <td>pi</td>
+      <td>Sc@d@21!</td>
+      <td>
+        <ul>
+          <li>VLAN 1: 10.1.1.112</li>
+          <li>VLAN 2: 10.1.88.10</li>
+          <li>VLAN 3: 10.1.44.1</li>
+        </ul>
+      </td>
+      <td>b8:27:eb:ab:72:84</td>
+      <td>Console</td>
+      <td>SYS</td>
+      <td>Local</td>
+      <td>September 2022</td>
+      <td>DHCP and DNS Server</td>
+      <td>dnsutils vlan vim net-tools nmap wireshark, bind9(X)</td>
+    </tr>
+    <tr>
+      <th scope="row">7</th>
+      <td>PI-01</td>
+      <td>RYU</td>
+      <td>pi</td>
+      <td>Sc@d@21!</td>
+      <td>
+        <ul>
+          <li>VLAN 1: 10.1.1.120</li>
+          <li>VLAN 2: 10.1.88.3</li>
+        </ul>
+      </td>
+      <td>b8:27:eb:c3:ee:71</td>
+      <td>GUI</td>
+      <td>SDN</td>
+      <td>Local</td>
+      <td>September 2022</td>
+      <td>Ryu SDN</td>
+      <td>dnsutils vlan vim net-tools nmap wireshark python 3, ryu,</td>
+    </tr>
+    <tr>
+      <th scope="row">8</th>
+      <td>PI-25</td>
+      <td>sFlow-Collector-GUI</td>
+      <td>pi</td>
+      <td>Sc@d@21!</td>
+      <td>
+        <ul>
+          <li>VLAN 1: 10.1.1.161</li>
+        </ul>
+      </td>
+      <td>b8:27:eb:03:84:8e	</td>
+      <td>GUI</td>
+      <td>sFlow</td>
+      <td>Remote</td>
+      <td>September 2022</td>
+      <td>sFlow Collector (GUI)</td>
+      <td>dnsutils vlan vim net-tools nmap wireshark , sFlowTrend-unix, sFlowTrend-linux, java(X)</td>
+    </tr>
+    <tr>
+      <th scope="row">9</th>
+      <td>PI-24</td>
+      <td>sFlow-Collector</td>
+      <td>pi</td>
+      <td>Sc@d@21!</td>
+      <td>
+        <ul>
+          <li>VLAN 1: 10.1.1.6</li>
+        </ul>
+      </td>
+      <td>b8:27:eb:eb:08:18</td>
+      <td>Console</td>
+      <td>sFlow</td>
+      <td>Remote</td>
+      <td>September 2022</td>
+      <td>sFlow Collector (Console)</td>
+      <td>dnsutils vlan vim net-tools nmap wireshark, git, pip, tcpdump(X)</td>
+    </tr>
+    <tr>
+      <th scope="row">10</th>
+      <td>PI-22</td>
+      <td>Camera</td>
+      <td>pi</td>
+      <td>Sc@d@21!</td>
+      <td>
+        <ul>
+          <li>VLAN 1: 10.1.1.199</li>
+        </ul>
+      </td>
+      <td>b8:27:eb:94:9f:d6</td>
+      <td>GUI</td>
+      <td>RF</td>
+      <td>Remote</td>
+      <td>September 2022</td>
+      <td>Camera</td>
+      <td>dnsutils vlan vim net-tools nmap wireshark, P2PSurveillance, vim, StartCamera(X)</td>
+    </tr>
+    <tr>
+      <th scope="row">11</th>
+      <td>PI-03</td>
+      <td>DHCP</td>
+      <td>pi</td>
+      <td>Sc@d@21!</td>
+      <td>
+        <ul>
+          <li>WAITING</li>
+        </ul>
+      </td>
+      <td>b8:27:eb:37:4f:35</td>
+      <td>Console</td>
+      <td>SYS</td>
+      <td>Professor</td>
+      <td>September 2022</td>
+      <td>Needs to finish installing programs</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th scope="row">12</th>
+      <td>PI-04</td>
+      <td>control-panel</td>
+      <td>pi</td>
+      <td>Sc@d@21!</td>
+      <td>
+        <ul>
+          <li>VLAN 1: 10.1.1.145</li>
+        </ul>
+      </td>
+      <td>b8:27:eb:68:2d:a8</td>
+      <td>Console</td>
+      <td>SDN</td>
+      <td>Local</td>
+      <td>September 2022</td>
+      <td>For knife-switch</td>
+      <td>ndnsutils vlan vim net-tools nmap wireshark(X)</td>
+    </tr>
+    <tr>
+      <th scope="row">13</th>
+      <td>PI-02</td>
+      <td>Network-Operations</td>
+      <td>pi</td>
+      <td>Sc@d@21!</td>
+      <td>
+        <ul>
+          <li>VLAN 1: 10.1.1.7</li>
+          <li>VLAN 2: 10.1.88.7</li>
+          <li>VLAN 3: 10.1.44.7</li>
+          <li>VLAN 4: 10.1.66.7</li>
+        </ul>
+      </td>
+      <td>b8:27:eb:56:1c:61</td>
+      <td>GUI</td>
+      <td>SYS</td>
+      <td>Local</td>
+      <td>September 2022</td>
+      <td>Used to monitor zero-trust data sources, and sys-log server</td>
+      <td>dnsutils vlan vim net-tools nmap wireshark, rpi-imager, vlan(X)</td>
+    </tr>
+    <tr>
+      <th scope="row">14</th>
+      <td>PI-20</td>
+      <td>Neural-Network</td>
+      <td>pi</td>
+      <td>Sc@d@21!</td>
+      <td>
+        <ul>
+          <li>VLAN1: 10.1.1.136(DHCP)</li>
+        </ul>
+      </td>
+      <td>b8:27:eb:59:d1:f6</td>
+      <td>GUI</td>
+      <td>ML/NN</td>
+      <td>Local</td>
+      <td>September 2022</td>
+      <td>ML/NN testing pi</td>
+      <td>dnsutils vlan vim net-tools nmap wireshark(X)</td>
+    </tr>
+    <tr>
+      <th scope="row">15</th>
+      <td>PI-23</td>
+      <td>JB-server</td>
+      <td>pi</td>
+      <td>Sc@d@21!</td>
+      <td>
+        <ul>
+          <li>VLAN 1: 10.1.1.170</li>
+        </ul>
+      </td>
+      <td>b8:27:eb:e1:55:6e</td>
+      <td>Console</td>
+      <td>SYS</td>
+      <td>Local</td>
+      <td>September 2022</td>
+      <td>Server testing pi (that John is working on)</td>
+      <td>(X)</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
