@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SEL 311B Configuration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../style.css"/>
+</head>
+<body>
+
+<h1>SEL 311B Configuration</h1>
+<a class="link" href="../../sel.html">Back to SEL Page</a>
+
+<hr class="bg border-1 border-top border-dark">
+
+<!-- Version Image -->
+<div class="text-center">
+  <figure class="figure">
+  <img src="sel311bconfig.png" class="figure-img img-fluid" alt=""/>
+  <figcaption class="figure-caption">11-2-21 Version Info</figcaption>
+  </figure>
+</div>
+
+<!-- Buttons -->
+<p class="text-center">
+  <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+    Access Information
+  </button>
+  <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+    LED Circuit
+  </button>
+  <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+    Pulse LED
+  </button>
+</p>
+
+<!-- Access Information -->
+<div class="collapse" id="collapseExample1">
+  <div class="card card-body">
+    <p>The 311B can be accessed using via Serial Port F using an RS-232 cable. Using a terminal source emulator such as PuTTY or the AcSELerator QuickSet application on the lab computer.</p>
+    <div class="list">
+      <ul>
+        <li>Connect the 311B via serial port F to a terminal</li>
+        <img src="serialPortF.png" alt=""/>
+        <li>Open Device Manager and identify what port is used for the device.</li>
+        <img src="devMan.png" alt=""/>
+        <li>Open PuTTY or the AcSELerator QuickSet app.</li>
+        <img src="putty.png" alt=""/>
+        <li>Once you establish a connection you will see a '='.</li>
+        <img src="Access%20Level%20Password.png" alt=""/>
+        <li>Enter 'ACC'. Once entered you will be prompted for a password, in which you will enter 'OTTER' to gain level one access</li>
+        <ul>
+          <li>Note: When you type commands/passwords, make sure to spell them properly (backspace doesn't work).</li>
+        </ul>
+        <li>To gain level two access type in '2ACC' then use the password 'TAIL'.</li>
+      </ul>
+    </div>
+    <h2>AcSELerator</h2>
+    <div class="list">
+      <ul>
+        <li>For the acSELerator app, Set communication parameters to serial, 2400 baud rate, 8 data-bits, 1 stop-bit</li>
+        <img src="acselParam.png" alt=""/>
+        <img src="acsel2.png" alt=""/>
+        <li>Once you establish a connection you will see a '='.</li>
+        <li>Enter 'ACC'. Once entered you will be prompted for a password, in which you will enter 'OTTER' to gain level one access</li>
+        <li>To gain level two access type in '2ACC' then use the password 'TAIL'.</li>
+        <img src="login.png" alt=""/>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- LED Circuit -->
+<div class="collapse" id="collapseExample2">
+  <div class="card card-body text-center">
+    <figure class="figure">
+      <img src="311_LEDCircuit.drawio.png" class="figure-img img-fluid" alt=""/>
+      <figcaption class="figure-caption">Circuit Diagram</figcaption>
+    </figure>
+    <figure class="figure">
+      <img src="20211214_CircuitDiagram.jpeg" class="figure-img img-fluid" alt=""/>
+      <figcaption class="figure-caption">Circuit in Lab <br> When the LED is on, using the PUL OUT107 5 command turns it off for 5 seconds.</figcaption>
+    </figure>
+  </div>
+</div>
+
+<!-- Pulse LED -->
+<div class="collapse" id="collapseExample3">
+  <div class="card card-body">
+  <h2>Pulse LED Information</h2>
+  <div class="list">
+    <ul>
+      <li>Make sure machine and LED circuit are plugged in/turned on.</li>
+      <li>The pushbuttons on the front-panel have dual functions (primary/secondary). After a primary function is selected (first row), the pushbuttons revert to operating on their secondary function (second row).</li>
+    </ul>
+    <ol>
+      <li>The corresponding front-pane pushbutton for the PUL command is the CNTRL button, which we have labeled "PULSE". Press the PULSE button.</li>
+      <li>Press SELECT.</li>
+      <img src="ManualPulse1.jpeg" alt=""/>
+      <li>f you are prompted for a password, use the left/right arrow keys to navigate which letter you want to change, and use the up/down arrow keys to navigate through the alphabet to select the letter you want. The password is "EDITH_" (make sure to change the last letter to a space, which comes before 'A'). Press SELECT when you are ready to enter the password.</li>
+        <ol>
+          <li>Note: the password can have upper and lowercase letters, '-', '.', numbers 0-9, and a space. According to the manual, the default front panel timeout (FP_TO) is set to 15 min.</li>
+          <img src="ManualPulse2.jpeg" alt=""/>
+        </ol>
+      <li>After you log in, use the up/down arrow keys to navigate to which output you want to pulse.</li>
+      <li>Press SELECT</li>
+      <img src="ManualPulse3.jpeg" alt=""/>
+      <li>Use the right/left arrow keys to select "Yes". Press SELECT</li>
+      <ol>
+        <li>Note: Output contacts are pulsed for only 1 second from the front panel.</li>
+        <img src="ManualPulse4.jpeg" alt=""/>
+      </ol>
+    </ol>
+  </div>
+  </div>
+</div>
+
+</body>
+</html>
