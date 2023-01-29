@@ -33,10 +33,23 @@
     <ol>
       <li><a href="#">Ryu - April 27th</a> with commentary</li>
     </ol>
-    <li>Current Progress (as of 9/20)</li>
+    <li>Current Progress (as of 11/17/22)</li>
     <ol>
       <li>Added a check if the source and destination port are the same, then return.</li>
       <li>Implemented a way to remove flows from switch, replacing the hard timeout that was used as a placeholder last semester.</li>
+      <li>Transitioned from Ryu to OS-Ken, which is essentially an actively maintained version of Ryu. </li>
+      <li>Created custom programs to parse the packet data.</li>
+      <li>Determined that the following arguments cannot be used with OFPMatch (in the hardware table):
+        <ol>
+          <li>in_phy_port (Switch physical input port)</li>
+          <li>eth_dst (Ethernet destination address)</li>
+          <li>arp_spa (ARP source IPv4 address)</li>
+          <li>arp_tpa (ARP target IPv4 address)</li>
+          <li>arp_op (ARP opcode)</li>
+          <li>arp_sha (ARP source hardware address)</li>
+          <li>arp_tha (ARP target hardware address)</li>
+        </ol>
+      </li>
     </ol>
   </ol>
 </div>
@@ -97,7 +110,6 @@
   </ol>
 
 </div>
-
 
 </body>
 </html>
