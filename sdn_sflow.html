@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>sFlow and SDN</title>
+  <title>sFlow & SDN</title>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <script>
-    $(function(){
+    $(function () {
       $("#navbar").load("navbar.html");
       $("#footer").load("footer.html");
     });
@@ -23,11 +23,12 @@
 
 <!-- Title -->
 <div>
-  <h1>sFlow and SDN</h1>
+  <h1>sFlow & SDN</h1>
 </div>
 
 <!-- Team Positions -->
-<<div class="table table-responsive">
+<
+<div class="table table-responsive">
   <table class="table table-sm table-striped table-bordered">
     <thead>
     <tr>
@@ -54,10 +55,11 @@
 
 <hr class="bg border-1 border-top border-dark">
 
-<!-- Overview -->
+<!----------------- SDN -------------------->
 <div>
-<h2>Overview</h2>
-<p>An SDN is a <a href="https://www.youtube.com/watch?v=Z5Gi2Bpd82M">Software Defined Network</a>. And SDN Controller is how we dictate how it behaves.</p>
+  <h2><strong>SDN</strong></h2>
+  <h4>Overview</h4>
+  <p>An SDN is a <a href="https://www.youtube.com/watch?v=Z5Gi2Bpd82M">Software Defined Network</a>. An SDN Controller is how we dictate how it behaves.</p>
   <div class="table table-responsive">
     <table class="table table-sm table-striped table-bordered">
       <thead>
@@ -87,8 +89,8 @@
 </div>
 
 <!-- Current -->
-<h2>Current</h2>
-<p>SDN Controllers currently in use for this project</p>
+<h4>Current</h4>
+<p>SDN Controllers currently in use for this project:</p>
 <div class="table table-responsive">
   <table class="table table-sm table-striped table-bordered">
     <tbody>
@@ -107,7 +109,7 @@
       <td>Web-based UI</td>
     </tr>
     <tr>
-      <th scope="row"><a href="https://ryu-sdn.org/">RYU Controller</a></th>
+      <th scope="row"><a href="https://ryu-sdn.org/sdn_sflow.html">RYU Controller</a></th>
       <td>Active - Release 4.34</td>
       <td>Ubuntu (16.04 LTS or later)</td>
       <td>N/A</td>
@@ -126,8 +128,8 @@
 </div>
 
 <!-- Pass -->
-<h2>Pass</h2>
-<p>SDN Controllers that will not be used for this project</p>
+<h4>Pass</h4>
+<p>SDN Controllers that will not be used for this project:</p>
 <div class="table table-responsive">
   <table class="table table-sm table-striped table-bordered">
     <tbody>
@@ -183,10 +185,10 @@
     </tr>
     <tr>
       <th scope="row"><a href="https://docs.opendaylight.org/en/stable-sodium/#getting-started-with-opendaylight">OpenDaylight</a></th>
-      <td>Active-15.0.0	</td>
+      <td>Active-15.0.0</td>
       <td>Apache Maven 3.5.2 or later,Linux,Windows</td>
       <td>YANG Tools, NETCONF, and MD-SAL</td>
-      <td>Eclipse Public License 1.0	</td>
+      <td>Eclipse Public License 1.0</td>
       <td>Java</td>
       <td><a href="https://docs.opendaylight.org/en/latest/downloads.html">Download</a></td>
       <td>Lighty-Core is a more specialized version in line with our wanted use</td>
@@ -256,7 +258,7 @@
       <td>Active v.21.10.1</td>
       <td>Linux/Arm, x86, Power</td>
       <td>3rd Gen US Patent 7,961,636</td>
-      <td>Apache 2.0	</td>
+      <td>Apache 2.0</td>
       <td>-</td>
       <td><a href="https://fd.io/gettingstarted/installing/">Download</a></td>
       <td>Cannot easily run on a raspberry PI</td>
@@ -266,7 +268,7 @@
       <td>Active R21.12</td>
       <td>Windows/Linux</td>
       <td>OpenContrail</td>
-      <td>Apache 2.0	</td>
+      <td>Apache 2.0</td>
       <td>Python/c++/Node/Go</td>
       <td><a href="https://tungsten.io/start/">Download</a></td>
       <td>Requires 50+GB of storage</td>
@@ -286,8 +288,8 @@
 </div>
 
 <!-- TBD -->
-<h2>TBD</h2>
-<p>SDN Controllers that needs to be looked at to be determined if it has potential or not.</p>
+<h4>TBD</h4>
+<p>SDN Controllers that needs to be looked at to be determined if it has potential:</p>
 <div class="table table-responsive">
   <table class="table table-sm table-striped table-bordered">
     <tbody>
@@ -365,9 +367,214 @@
   </table>
 </div>
 
-<!-- Will transfer sFlow information to this page -->
-<h2>sFlow information coming soon!<br/><br/></h2>
+<!----------------- sFlow -------------------->
+<h2><strong>sFlow</strong></h2>
+<!-- Notes -->
+<h4>Notes</h4>
+<div class="list">
+  <ul>
+    <li>sFlow is a technology that monitors traffic via sampled packets of data.</li>
+    <li>The goal is to configure the network switches and Raspberry Pis to use sFlow to create a database of monitored traffic that can be fed into a machine learning (ML) algorithm. That data will be fed into the ML algorithm so it can learn to tell
+      the difference between normal and abnormal traffic.
+    </li>
+    <li>Use Netcat on Raspberry Pis to monitor the sFlow traffic (we do not need any sFlow software on Pi).</li>
+    <li>XDR files are packs of sFlow data.</li>
+    <li>We have to decide whether to use Python or C++ to unpack XDR files.</li>
+    <li>sFlow is going to need an sFlow exporter, collector, and analyzer. (refer to "sFlow Structure" in "Helpful Links" table below.)</li>
+  </ul>
+</div>
 
+<!-- Tasks -->
+<h4>Tasks</h4>
+<div class="table table-responsive">
+  <table class="table table-sm table-striped table-bordered">
+    <thead>
+    <tr>
+      <th scope="col">Tasks</th>
+      <th scope="col">Assigned To</th>
+      <th scope="col">Date of Completion</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">Get a fresh Raspberry Pi, put it on Vlan 1, get a static IP for it, and hook it up to the sFlow configured switch</th>
+      <td>-</td>
+      <td>9/15/22</td>
+    </tr>
+    <tr>
+      <th scope="row">Configure network switches to transmit sFlow traffic</th>
+      <td>-</td>
+      <td>9/15/22</td>
+    </tr>
+    <tr>
+      <th scope="row">Get raspberry pis to receive sFlow traffic</th>
+      <td>-</td>
+      <td>9/27/22</td>
+    </tr>
+    <tr>
+      <th scope="row">Create an sFlow collector and analyzer using Python</th>
+      <td>Chase</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th scope="row">Create an sFlow collector and analyzer using C</th>
+      <td>Andee</td>
+      <td>-</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Helpful Links -->
+<div class="table table-responsive">
+  <table class="table table-sm table-striped table-bordered">
+    <thead>
+    <tr>
+      <th scope="col" colspan="2">Helpful Links</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">Components of sFlow Analysis</th>
+      <td><a href="https://www.kentik.com/kentipedia/sflow-collector/#:~:text=to%20sFlow%20Collection-,What%20is%20an%20sFlow%20Collector%3F,probes%20and%20other%20network%20devices.">Link</a></td>
+    </tr>
+    <tr>
+      <th scope="row">sFlow Organization Home Page</th>
+      <td><a href="https://sflow.org/#:~:text=sFlow%C2%AE%20is%20an%20industry,and%20defense%20against%20security%20threats.">Link</a></td>
+    </tr>
+    <tr>
+      <th scope="row">sFlow Description</th>
+      <td><a href="https://en.wikipedia.org/wiki/SFlow">Link</a></td>
+    </tr>
+    <tr>
+      <th scope="row">Setting up sFlow on Raspberry Pi</th>
+      <td><a href="https://blog.sflow.com/2016/06/raspberry-pi-real-time-network-analytics.html">Link</a></td>
+    </tr>
+    <tr>
+      <th scope="row">Accessing a Switch via CLI</th>
+      <td><a href="https://www.youtube.com/watch?v=VQEQp5PR86k">Link</a></td>
+    </tr>
+    <tr>
+      <th scope="row">Configuring sFlow for Network Switch</th>
+      <td><a href="https://techhub.hpe.com/eginfolib/networking/docs/switches/K-KA-KB/15-18/5998-8160_ssw_mcg/content/ch06s09.html">Link</a></td>
+    </tr>
+    <tr>
+      <th scope="row">XDR Description</th>
+      <td><a href="https://en.wikipedia.org/wiki/External_Data_Representation">Link</a></td>
+    </tr>
+    <tr>
+      <th scope="row">UDP Client and Server Code (Python)</th>
+      <td><a href="https://linuxhint.com/send_receive_udp_python/">Link</a></td>
+    </tr>
+    <tr>
+      <th scope="row">sFlow Collector Reference Code (Python)</th>
+      <td><a href="https://github.com/auspex-labs/sflow-collector">Link</a></td>
+    </tr>
+    <tr>
+      <th scope="row">sFlow toolkit</th>
+      <td><a href="https://inmon.com/technology/sflowTools.php">Link</a></td>
+    </tr>
+    <tr>
+      <th scope="row">sFlowTrend Tutorial</th>
+      <td><a href="https://inmon.com/products/sFlowTrend/help/html/introduction.gettingStarted.html">Link</a></td>
+    </tr>
+    <tr>
+      <th scope="row">sFlowTrend Download</th>
+      <td><a href="https://inmon.com/products/sFlowTrend.php">Link</a></td>
+    </tr>
+    <tr>
+      <th scope="row">Netcat Linux Command Help</th>
+      <td><a href="https://www.computerhope.com/unix/nc.htm">Link</a></td>
+    </tr>
+    <tr>
+      <th scope="row">Mininet Flow Analytics</th>
+      <td><a href="https://blog.sflow.com/2016/05/mininet-flow-analytics.html">Link</a></td>
+    </tr>
+    <tr>
+      <th scope="row">Encode/Decode XDR Files</th>
+      <td><a href="https://docs.python.org/3/library/xdrlib.html">Link</a></td>
+    </tr>
+    <tr>
+      <th scope="row">Transferring files between systems</th>
+      <td><a href="https://unix.stackexchange.com/questions/106480/how-to-copy-files-from-one-machine-to-another-using-ssh">Link</a></td>
+    </tr>
+    <tr>
+      <th scope="row">Hexdump</th>
+      <td><a href="https://pypi.org/project/hexdump/">Link</a></td>
+    </tr>
+    <tr>
+      <th scope="row">Ethernet II</th>
+      <td><a href="https://en.wikipedia.org/wiki/Ethernet_frame#Ethernet_II">Link</a></td>
+    </tr>
+    <tr>
+      <th scope="row">IPv4</th>
+      <td><a href="https://en.wikipedia.org/wiki/IPv4#Header">Link</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Useful Commands -->
+<h4>Useful Commands</h4>
+<div class="table table-responsive">
+  <table class="table table-sm table-striped table-bordered">
+    <tbody>
+    <tr>
+      <th scope="row">sudo tcpdump -w (filename) udp port 6343</th>
+      <td>writes udp traffic into a file</td>
+    </tr>
+    <tr>
+      <th scope="row">nc -l -v -u -p6343 -k</th>
+      <td>netcat that keeps listening for udp traffic from port 6343 and prints verbose output</td>
+    </tr>
+    <tr>
+      <th scope="row">scp (sender_username)@(sender_ip):(source file location, e.g. /home/pi/sflowPython/(filename)) (destination, e.g. /C:UserscdeliDownloads)</th>
+      <td>downloads a file from another computer on the same network</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Packets -->
+<div class="table table-responsive">
+  <table class="table table-sm table-striped table-bordered">
+    <thead>
+    <tr>
+      <th scope="col">Packet Sample Type</th>
+      <th scope="col">Length (bytes)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">Flow</th>
+      <td>160-208??</td>
+    </tr>
+    <tr>
+      <th scope="row">Counter</th>
+      <td>168</td>
+    </tr>
+    <tr>
+      <th scope="row">Generic Interface Counter</th>
+      <td>88</td>
+    </tr>
+    <tr>
+      <th scope="row">Ethernet Interface Counter</th>
+      <td>52</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Resources -->
+<h4>Resources</h4>
+<div class="list">
+  <ul>
+    <li><a href="https://blog.sflow.com/2016/06/raspberry-pi-real-time-network-analytics.html">Raspberry Pi Real Time Network Analytics</a></li>
+    <li><a href="https://sflow.org/#:~:text=sFlow%C2%AE%20is%20an%20industry,and%20defense%20against%20security%20threats.">sFlow Security Threats</a></li>
+    <li><a href="https://techhub.hpe.com/eginafolib/networking/docs/switches/K-KA-KB/15-18/5998-8160_ssw_mcg/content/ch06s09.html">Networking Switches</a></li>
+    <li><a href="https://www.youtube.com/watch?v=VQEQp5PR86k">sFlow Youtube Video</a></li>
+  </ul>
+</div>
 <!-- Footer -->
 <div id="footer"></div>
 
