@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RYU Example Program</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../style.css"/>
+</head>
+<body>
+
+<h1>RYU Example Program</h1>
+<a class="link" href="../../sdn.html">Back to SDN Controller Page</a>
+<hr class="bg border-1 border-top border-dark">
+
+<h2>Breakdown of Program</h2>
+<p>
+  <a href="https://github.com/faucetsdn/ryu/blob/master/ryu/app/simple_switch_13.py">Source of Example Program</a>
+</p>
+
+<h2>Code Setup</h2>
+<div class="pre">
+<pre>
+<code>
+  # Copyright (C) 2011 Nippon Telegraph and Telephone Corporation.
+  #
+  # Licensed under the Apache License, Version 2.0 (the "License");
+  # you may not use this file except in compliance with the License.
+  # You may obtain a copy of the License at
+  #
+  #    <a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a>
+  #
+  # Unless required by applicable law or agreed to in writing, software
+  # distributed under the License is distributed on an "AS IS" BASIS,
+  # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+  # implied.
+  # See the License for the specific language governing permissions and
+  # limitations under the License.
+
+  from ryu.base import app_manager
+  from ryu.controller import ofp_event
+  from ryu.controller.handler import CONFIG_DISPATCHER, MAIN_DISPATCHER
+  from ryu.controller.handler import set_ev_cls
+  from ryu.ofproto import ofproto_v1_3
+  from ryu.lib.packet import packet
+  from ryu.lib.packet import ethernet
+  from ryu.lib.packet import ether_types
+
+
+  class SimpleSwitch13(app_manager.RyuApp):                                    # Main class instance of RyuApp
+      OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]                                # Sets OpenFlow Protocol to only version 1.3
+
+     def init(self, *args, **kwargs):
+          super(SimpleSwitch13, self).init(*args, **kwargs)
+          self.mac_to_port = {}                                                # Eventually this dictionary will be updated with entries of {datapath:MAC address destination}
+</code>
+</pre>
+</div>
+
+<h2>Handshake Between Switch and Ryu Controller</h2>
+<div class="pre">
+<pre>
+<code>
+    @set_ev_cls(ofp_event.EventOFPSwitchFeatures, CONFIG_DISPATCHER)         # I would recommend looking up what a decorator function does in general
+    def switch_features_handler(self, ev):                                   # This function runs whenever this application receives the 'EventOFPSwitchFeatures' event
+                                                                             # This event happens whenever the switch loses connection from the controller (basically at startup)
+
+        datapath = ev.msg.datapath                                           # Datapath describes the OpenFlow switch connected to this controller (definition from Ryu docs)
+
+        ofproto = datapath.ofproto                                           # OpenFlow definitions, mainly constants appeared in the specification (definition from Ryu docs)
+
+        parser = datapath.ofproto_parser                                     # OpenFlow wire message encoder and decoder (definition from Ryu docs)
+
+
+        # install table-miss flow entry
+        #
+        # We specify NO BUFFER to max_len of the output action due to
+        # OVS bug. At this moment, if we specify a lesser number, e.g.,
+        # 128, OVS will send Packet-In with invalid buffer_id and
+        # truncated packet data. In that case, we cannot output packets
+        # correctly.  The bug has been fixed in OVS v2.1.0.
+        match = parser.OFPMatch()                                            # Every packet that the switch encounters will 'match' this flow
+
+        actions = [parser.OFPActionOutput(ofproto.OFPP_CONTROLLER,           # Instruction for the switch on what to do when it encounters a packet that matches the 'match'
+                                          ofproto.OFPCML_NO_BUFFER)]         # filter, 'OFPP_CONTROLLER' will send the packet to the controller, 'OFPCML_NO_BUFFER' tells the
+                                                                             # switch to send the entire packet (header + message), rather than just the header.
+
+        self.add_flow(datapath, 0, match, actions)                           # add_flow is defined later, but this instance creates (adds) the principle flow between the switch
+                                                                             # and the controller
+</code>
+</pre>
+</div>
+
+<h2>Add Flow Function</h2>
+<div class="pre">
+<pre>
+<code>
+    def add_flow(self, datapath, priority, match, actions, buffer_id=None):  # The function of this program that modifies the flow table inside the switch
+        ofproto = datapath.ofproto
+        parser = datapath.ofproto_parser
+
+        inst = [parser.OFPInstructionActions(ofproto.OFPIT_APPLY_ACTIONS,    # Actions for the majority for majority of flows will just be the out port to send the packet
+                                             actions)]
+        if buffer_id:
+            mod = parser.OFPFlowMod(datapath=datapath, buffer_id=buffer_id,  # Creates the modification message to send to the switch, note the priority of the flow created
+                                    priority=priority, match=match,          # during the handshake is lower than all others
+                                    instructions=inst)
+        else:
+            mod = parser.OFPFlowMod(datapath=datapath, priority=priority,
+                                    match=match, instructions=inst)
+        datapath.send_msg(mod)                                               # Sends the modification message
+</code>
+</pre>
+</div>
+
+<h2>Delete Flow Function</h2>
+<div class="pre">
+<pre>
+<code>
+    def delete_flow(self, datapath, match):
+        ofproto = datapath.ofproto
+        parser = datapath.ofproto_parser
+
+        table_id = 100                                                       # Needed so flows from first table are not deleted
+        mod = parser.OFPFlowMod(datapath=datapath, command=ofproto.OFPFC_DELETE, out_port=ofproto.OFPP_ANY,
+                                out_group=ofproto.OFPG_ANY, match=match, table_id=table_id)
+        datapath.send_msg(mod)                                               # Sends the modification message
+</code>
+</pre>
+</div>
+
+<h2>Packet In Event Handler</h2>
+<div class="pre">
+<pre>
+<code>
+    @set_ev_cls(ofp_event.EventOFPPacketIn, MAIN_DISPATCHER)                 # Main part of this application, run whenever this application receives the 'EventOFPPacketIn' event
+    def _packet_in_handler(self, ev):                                        # This event happens when, in the switch, a packet goes through the entire flow table until it
+                                                                             # reaches the flow created during the handshake, which just sends the packet to this controller
+
+        # If you hit this you might want to increase
+        # the "miss_send_length" of your switch
+        if ev.msg.msg_len < ev.msg.total_len:
+            self.logger.debug("packet truncated: only %s of %s bytes",
+                              ev.msg.msg_len, ev.msg.total_len)
+
+
+        msg = ev.msg                                                         # The physical packet, the switch sends the entire packet to this controller, and this is it
+
+        datapath = msg.datapath
+        ofproto = datapath.ofproto
+        parser = datapath.ofproto_parser
+        in_port = msg.match['in_port']                                      # Source port
+
+
+        pkt = packet.Packet(msg.data)                                       # analyse the received packets using the packet library.
+        eth = pkt.get_protocols(ethernet.ethernet)[0]
+
+        if eth.ethertype == ether_types.ETH_TYPE_LLDP:
+            # ignore lldp packet
+            return
+
+        dst = eth.dst                                                       # Destination MAC address
+        src = eth.src                                                       # Source MAC address
+
+        dpid = format(datapath.id, "d").zfill(16)                           # Datapath ID is the path (of switches) the packet took to get to the OpenFlow switch connected to
+        self.mac_to_port.setdefault(dpid, {})                               # Populates the dictionary initialized at the start of this program - writes down datapath ID
+
+        self.logger.info("packet in %s %s %s %s", dpid, src, dst, in_port)  # This logger defaults to printing to console, but can be configured when starting this application
+
+        # learn a mac address to avoid FLOOD next time.
+        self.mac_to_port[dpid][src] = in_port                               # Populates the dictionary initialized at the start of this program - writes down source MAC address
+                                                                            # and it's associated port
+
+        if dst in self.mac_to_port[dpid]:
+            out_port = self.mac_to_port[dpid][dst]                          # sets out port to destination port
+        else:
+            out_port = ofproto.OFPP_FLOOD                                   # sets out port to flood ALL ports
+
+        actions = [parser.OFPActionOutput(out_port)]                        # Actions tell the switch what to do with the packet, in this case just send to out_port
+
+        # install a flow to avoid packet_in next time
+        if out_port != ofproto.OFPP_FLOOD:                                  # Will only create a flow if destination MAC address is known
+
+            match = parser.OFPMatch(in_port=in_port, eth_dst=dst,           # Tells switch to match packets to this flow if source port, destination MAC address,
+                                    eth_src=src)                            # and source MAC address matches the flow.
+
+            # verify if we have a valid buffer_id, if yes avoid to send both
+            # flow_mod & packet_out
+            if msg.buffer_id != ofproto.OFP_NO_BUFFER:
+                self.add_flow(datapath, 1, match, actions, msg.buffer_id)   # Runs the previously defined add_flow function, which sends a message to the switch
+                return                                                      # This is returned here because if the switch has a buffer, then there is no need to
+                                                                            # use this program to send out the original packet, instead the switch will just send
+                                                                            # the packet out from it's buffer
+            else:
+                self.add_flow(datapath, 1, match, actions)                  # Runs the previously defined add_flow function, which sends a message to the switch
+
+        data = None
+        if msg.buffer_id == ofproto.OFP_NO_BUFFER:
+            data = msg.data
+
+        out = parser.OFPPacketOut(datapath=datapath,                        # This creates the message containing the original packet that this controller received.
+                                  buffer_id=msg.buffer_id,                  # If this controller knows the destination, it will just send it to that destination,
+                                  in_port=in_port, actions=actions,         # if not, it will send it to all ports available
+                                  data=data)
+        datapath.send_msg(out)                                              # Sends the original packet to its destination, Note, if a flow was created, (and the
+                                                                            # switch is not using a buffer, this will be the second message sent to the switch by
+                                                                            # the controller
+</code>
+</pre>
+</div>
+
+</body>
+</html>
