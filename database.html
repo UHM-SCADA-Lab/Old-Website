@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Legacy</title>
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <title>Database</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <script>
     $(function(){
       $("#navbar").load("navbar.html");
@@ -17,28 +17,38 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-
 <!-- Navbar -->
 <div id="navbar"></div>
 
-<h1>Legacy</h1>
-<p>Work done by earlier semesters that is still relevant but is not one of our current lines of effort.</p>
-<div class="table">
-  <table class="table table-striped">
+<!-- Title -->
+<div>
+  <h1>Database</h1>
+</div>
+
+<!-- Team Positions -->
+<div class="table table-responsive">
+  <table class="table table-sm table-striped table-bordered">
     <thead>
+    <tr>
+      <th scope="row">Name</th>
+      <th>Position</th>
+    </tr>
     </thead>
     <tbody>
     <tr>
-      <th scope="row">Department</th>
-      <th scope="row">Role Description</th>
+      <td>Bodie</td>
+      <td>Lead</td>
     </tr>
     <tr>
-      <th scope="row"><a href="rf.html" class="text-dark">Radio Frequency Team</a></th>
-      <td>Establish and maintain RF communication between buildings</td>
+      <td>Justin</td>
+      <td>Assistant</td>
     </tr>
     </tbody>
   </table>
 </div>
+
+<hr class="bg border-1 border-top border-dark">
+
 <!-- Footer -->
 <div id="footer"></div>
 

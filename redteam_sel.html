@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Red Team/SEL</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+    $(function(){
+      $("#navbar").load("navbar.html");
+      $("#footer").load("footer.html");
+    });
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- Navbar -->
+<div id="navbar"></div>
+
+<!-- Title -->
+<div>
+  <h1>Red Team/SEL</h1>
+</div>
+
+<!-- Team Positions -->
+<<div class="table table-responsive">
+  <table class="table table-sm table-striped table-bordered">
+    <thead>
+    <tr>
+      <th scope="row">Name</th>
+      <th>Position</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Justin</td>
+      <td>Lead</td>
+    </tr>
+    <tr>
+      <td>Cam</td>
+      <td>Assistant</td>
+    </tr>
+    <tr>
+      <td>Edward</td>
+      <td>Assistant</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="bg border-1 border-top border-dark">
+
+<!-- Devices -->
+<div class="table table-responsive">
+  <table class="table table-sm table-striped table-bordered">
+    <thead>
+    <tr>
+      <th scope="col" colspan="2">All Devices In Use</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td>Link</td>
+    </tr>
+    <tr>
+      <th scope="row">RTAC SEL-3505</th>
+      <td><a href="https://laulima.hawaii.edu/access/content/group/MAN.XLSEEX96mn.202310/Manuals/RTAC%20SEL-3505/RTA%20SEL-3505%20Manual.pdf">Manual</a></td>
+    </tr>
+    <tr>
+      <th scope="row">SEL-451</th>
+      <td><a href="https://laulima.hawaii.edu/access/content/group/MAN.XLSEEX96mn.202310/Manuals/SEL%20-%20451/SEL%20-%20451%20Factory%20Reset/sel451%20manual.pdf">Manual</a></td>
+    </tr>
+    <tr>
+      <th scope="row">SEL 311B</th>
+      <td><a href="https://laulima.hawaii.edu/access/content/group/MAN.XLSEEX96mn.202310/Manuals/SEL-311%20B/311B%20Instruction%20Manual.pdf">Manual</a></td>
+    </tr>
+    <tr>
+      <th scope="row">DL 205</th>
+      <td><a href="https://laulima.hawaii.edu/access/content/group/MAN.XLSEEX96mn.202310/Manuals/Direct%20Logic%20205%20Koyo/DL205%20Manual.pdf">Manual</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container linux-nav">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item button-nav">
+        <button class="btn btn-sm btn-outline-secondary" type="button"><a class="nav-link active" aria-current="page" href="DepartmentPages/RedTeam_SEL/factory-reset.html">Factory Reset</a></button>
+      </li>
+      <li class="nav-item button-nav">
+        <button class="btn btn-sm btn-outline-secondary" type="button"><a class="nav-link active" href="DepartmentPages/RedTeam_SEL/trip-logic-config.html">SEL 451 Trip Logic Configuration</a></button>
+      </li>
+      <li class="nav-item button-nav">
+        <button class="btn btn-sm btn-outline-secondary" type="button"><a class="nav-link active" href="DepartmentPages/RedTeam_SEL/311B-config.html">SEL 311B Configuration</a></button>
+      </li>
+      <li class="nav-item button-nav">
+        <button class="btn btn-sm btn-outline-secondary" type="button"><a class="nav-link active" href="https://www.youtube.com/watch?v=LlS2wIQo9GY">SEL Operation: SCADA Demo</a></button>
+      </li>
+      <li class="nav-item button-nav">
+        <button class="btn btn-sm btn-outline-secondary" type="button"><a class="nav-link active" href="DepartmentPages/RedTeam_SEL/sel-setup.html">SEL Set-up</a></button>
+      </li>
+      <li class="nav-item button-nav">
+        <button class="btn btn-sm btn-outline-secondary" type="button"><a class="nav-link active" href="DepartmentPages/RedTeam_SEL/wiring-diagram.html">Wiring Diagram</a></button>
+      </li>
+      <li class="nav-item button-nav">
+        <button class="btn btn-sm btn-outline-secondary" type="button"><a class="nav-link active" href="DepartmentPages/RedTeam_SEL/output-testing.html">Output Testing</a></button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Overview -->
+<h2>Overview</h2>
+<p>This page will provide a detailed layout of how to configure each SEL device, how they will be synchronously operated, as well as a specification table of the wiring configuration for the DL 205</p>
+
+<!-- Check connections/ports using nmap(also alt to ssh using port 414: https) -->
+<h2>Check connections/ports using nmap(also alt to ssh using port 414: https)</h2>
+<div class="table table-responsive">
+  <table class="table table-sm table-striped table-bordered">
+    <thead>
+    <tr>
+      <th scope="col" colspan="2">Connection Check via NMAP</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">RTAC SEL 3505 Connection Check(Troubleshooting via NMAP)</th>
+      <td><a href="DepartmentPages/RedTeam_SEL/rtac-sel3505-connection.html">Link</a></td>
+    </tr>
+    <tr>
+      <th scope="row">NMAP</th>
+      <td><a href="https://nmap.org/download.html">www.nmap.org</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- IF port 22 displays use putty for windows or use terminal on mac to SSH(ssh 10.1.1.31) -->
+<h2>If port 22 displays use putty for windows or use terminal on mac to SSH(ssh 10.1.1.31)</h2>
+<div class="table table-responsive">
+  <table class="table table-sm table-striped table-bordered">
+    <thead>
+    <tr>
+      <th scope="col" colspan="2">Putty</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">Link to Putty Site</th>
+      <td><a href="https://www.putty.org/">www.putty.org</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SEL 3505 Configuration -->
+<h2>SEL 3505 Configuration</h2>
+<p>Once the 3505 is connected and firmware is installed, navigate to 10.1.1.31 This will direct you to the login page from SEL Inc.</p>
+<div class="table table-responsive">
+  <table class="table table-sm table-striped table-bordered">
+    <thead>
+    <tr>
+      <th scope="col" colspan="2">Login Information</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">Username</th>
+      <td>UHmanoa</td>
+    </tr>
+    <tr>
+      <th scope="row">Password</th>
+      <td>Sel3505*</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SEL 451 Configuration -->
+<h2>SEL 3505 Configuration</h2>
+<p>Serial Communication (Command Line)</p>
+<div class="table table-responsive">
+  <table class="table table-sm table-striped table-bordered">
+    <thead>
+    <tr>
+      <th scope="col" colspan="2">Settings</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">Baud Rate</th>
+      <td>9600</td>
+    </tr>
+    <tr>
+      <th scope="row">Data Bits</th>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th scope="row">Stop Bits</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th scope="row">Parity</th>
+      <td>None</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div class="table table-responsive">
+  <table class="table table-sm table-striped table-bordered">
+    <thead>
+    <tr>
+      <th scope="col" colspan="2">Default Passwords</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">Access Level 1</th>
+      <td>OTTER</td>
+    </tr>
+    <tr>
+      <th scope="row">Access Level B</th>
+      <td>EDITH</td>
+    </tr>
+    <tr>
+      <th scope="row">Access Level 2</th>
+      <td>TAIL</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Footer -->
+<div id="footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RYU - April 27th</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../style.css"/>
+</head>
+<body>
+
+<h1>RYU - April 27th</h1>
+<a class="link" href="ryu-labnotes.html">Back to RYU Lab Notes Page</a>
+<hr class="bg border-1 border-top border-dark">
+
+<h2>This is where we left off at the end of the Spring 2022 semester, with only a minor edit to tidy it up a bit.</h2>
+<p>
+  Comments only document the changes from the provided (from Ryu github) example program.
+</p>
+
+<div class="pre">
+<pre>
+<code>
+# Copyright (C) 2011 Nippon Telegraph and Telephone Corporation.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    external link: http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+# implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+from ryu.base import app_manager
+from ryu.controller import ofp_event
+from ryu.controller.handler import CONFIG_DISPATCHER, MAIN_DISPATCHER
+from ryu.controller.handler import set_ev_cls
+from ryu.ofproto import ofproto_v1_3
+from ryu.lib.packet import packet
+from ryu.lib.packet import ethernet
+from ryu.lib.packet import ether_types
+from ryu.lib.packet import ipv4
+
+
+class SimpleSwitch13(app_manager.RyuApp):
+    OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
+
+    def init(self, *args, **kwargs):
+        super(SimpleSwitch13, self).init(*args, **kwargs)
+        self.mac_to_port = {}
+
+    @set_ev_cls(ofp_event.EventOFPSwitchFeatures, CONFIG_DISPATCHER)
+    def switch_features_handler(self, ev):
+        datapath = ev.msg.datapath
+        ofproto = datapath.ofproto
+        parser = datapath.ofproto_parser
+
+        # install table-miss flow entry
+        #
+        # We specify NO BUFFER to max_len of the output action due to
+        # OVS bug. At this moment, if we specify a lesser number, e.g.,
+        # 128, OVS will send Packet-In with invalid buffer_id and
+        # truncated packet data. In that case, we cannot output packets
+        # correctly.  The bug has been fixed in OVS v2.1.0.
+        match = parser.OFPMatch()
+        actions = [parser.OFPActionOutput(ofproto.OFPP_CONTROLLER,
+                                          ofproto.OFPCML_NO_BUFFER)]
+        self.add_flow(datapath, 0, match, actions, 0, 0)                                                     # Added arguments for timeout
+
+
+
+    def add_flow(self, datapath, priority, match, actions, idle_timeout, hard_timeout, buffer_id=None):      # Added arguments for timeout
+        ofproto = datapath.ofproto
+        parser = datapath.ofproto_parser
+
+        table_id = 100                                                                                       # Our switch's 'hardware' table is #100, where table #0
+                                                                                                             # (the default table for the Ryu controller, is the
+                                                                                                             # 'start' table which cannot add new flows to
+
+        inst = [parser.OFPInstructionActions(ofproto.OFPIT_APPLY_ACTIONS,
+                                             actions)]
+        mod = parser.OFPFlowMod(datapath=datapath, priority=priority, match=match, instructions=inst,
+                                table_id=table_id, idle_timeout=idle_timeout,  hard_timeout=hard_timeout)    # Default timeout (from Ryu controller) is zero (aka
+                                                                                                             # infinite), timeouts can be set to integers
+                                                                                                             #  (in seconds)
+        datapath.send_msg(mod)
+
+    @set_ev_cls(ofp_event.EventOFPPacketIn, MAIN_DISPATCHER)
+    def _packet_in_handler(self, ev):
+
+        # If you hit this you might want to increase
+        # the "miss_send_length" of your switch
+        if ev.msg.msg_len < ev.msg.total_len:
+            self.logger.debug("packet truncated: only %s of %s bytes",
+                              ev.msg.msg_len, ev.msg.total_len)
+
+        msg = ev.msg
+        datapath = msg.datapath
+        ofproto = datapath.ofproto
+        parser = datapath.ofproto_parser
+        in_port = msg.match['in_port']
+        pkt = packet.Packet(msg.data)
+        eth = pkt.get_protocols(ethernet.ethernet)[0]
+
+        added_flow = 'False'                                                                                 # Used for logging purposes (end of program)
+
+        hard_timeout = 10                                                                                    # This is a temporary measure so the flows would auto
+                                                                                                             # clear from the switch, (as of 9/19) we are working on
+                                                                                                             # a different solution to remove the flows from the switch
+        idle_timeout = 0
+
+
+
+        if eth.ethertype == ether_types.ETH_TYPE_IP:
+            ip = pkt.get_protocol(ipv4.ipv4)
+            srcip = ip.src
+            dstip = ip.dst
+        else:
+            srcip = 'None'                                                                                  # Used for logging purposes (end of program)
+            dstip = 'None'                                                                                  # Used for logging purposes (end of program)
+
+
+        if eth.ethertype == ether_types.ETH_TYPE_LLDP:
+            # ignore lldp packet
+            return
+
+
+        dst = eth.dst
+        src = eth.src
+        dpid = datapath.id
+        self.mac_to_port.setdefault(dpid, {})
+
+        # learn a mac address to avoid FLOOD next time.
+        self.mac_to_port[dpid][src] = in_port
+
+        if dst in self.mac_to_port[dpid]:
+            out_port = self.mac_to_port[dpid][dst]
+        else:
+            out_port = ofproto.OFPP_FLOOD
+
+        actions = [parser.OFPActionOutput(out_port)]
+
+        # install a flow to avoid packet_in next time
+        if out_port != ofproto.OFPP_FLOOD:
+            # check IP Protocol and create a match for IP
+            if eth.ethertype == ether_types.ETH_TYPE_IP:
+                match = parser.OFPMatch(eth_type=ether_types.ETH_TYPE_IP, ipv4_src=srcip, ipv4_dst=dstip,   # Note the lack of matching based off of destination MAC
+                                        in_port=in_port, eth_src=src)                                       # address, this is due to our switch not being able to
+                                                                                                            # match packets to flows using certain parameters,
+                                                                                                            # including the destination MAC address (technically
+                                                                                                            # not being able to be matched in table 100, however
+                                                                                                            # table 100 is much faster than the other available tables
+
+                added_flow = 'True'                                                                         # Used for logging purposes (end of program)
+                self.add_flow(datapath, 1, match, actions, idle_timeout, hard_timeout)
+        else:
+            if eth.ethertype == ether_types.ETH_TYPE_ARP:                                                   # ARP's destination is all ports
+                match = parser.OFPMatch(eth_type=ether_types.ETH_TYPE_ARP, in_port=in_port, eth_src=src)
+                added_flow = 'True'                                                                         # Used for logging purposes (end of program)
+                self.add_flow(datapath, 1, match, actions, idle_timeout, hard_timeout)
+            '''
+            elif eth.ethertype == ether_types.ETH_TYPE_8021Q:                                               # This was an attempt to handle tagged traffic
+                match = parser.OFPMatch(eth_type=ether_types.ETH_TYPE_8021Q, in_port=in_port, eth_src=src)  # Didn't work, and still (as of 9/19) needs to be fixed
+                added_flow = 'True'                                                                         # Used for logging purposes (end of program)
+                self.add_flow(datapath, 1, match, actions, idle_timeout, hard_timeout)
+            '''
+
+
+        dash_line=75*'-'
+        log_format_address = '{data_type:<5}|{src_address:<17}|{dst_address:<17}| |{info:<8}|{value:<8}'
+        log_format_info = '{info_1:<9}|{value_1:<9}| |{info_2:<9}|{value_2:<9}| |'
+
+
+        self.logger.info(dash_line)
+        self.logger.info(log_format_address.format(data_type='MAC',src_address=src, dst_address=dst, info='AddFlow?',value=added_flow))
+        self.logger.info(log_format_address.format(data_type='IP',src_address=srcip, dst_address=dstip, info='Eth Type',value=str(hex(eth.ethertype))[2:]))
+        self.logger.info(log_format_address.format(data_type='Port',src_address=in_port, dst_address=out_port, info='HardTOut',value=hard_timeout))
+        self.logger.info(log_format_address.format(data_type='DPID',src_address=str(hex(dpid))[2:],dst_address='',info='IdleTOut',value=idle_timeout))
+        #self.logger.info(log_format_info.format(info_1='Hello',value_1='Goodbye',info_2='Stop',value_2='Go Go Go'))
+
+        # This logger we created and (since the logger defaults to printing to console) prints out relevant information from each packet, as shown, the MAC
+        # addresses, the IP addresses, and the ports of the source and destination. Also logs whether or not a flow was created, the Ethernet protocol (EtherType),
+        # the datapath ID, and the timeouts used.
+
+
+
+        data = None
+        if msg.buffer_id == ofproto.OFP_NO_BUFFER:
+            data = msg.data
+
+        out = parser.OFPPacketOut(datapath=datapath, buffer_id=msg.buffer_id,
+                                  in_port=in_port, actions=actions, data=data)
+        datapath.send_msg(out)
+</code>
+</pre>
+</div>
+
+</body>
+</html>
