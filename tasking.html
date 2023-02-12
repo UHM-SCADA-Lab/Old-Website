@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tasking</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+    $(function(){
+      $("#navbar").load("navbar.html");
+      $("#footer").load("footer.html");
+    });
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<!-- Navbar -->
+<div id="navbar"></div>
+
+<!-- Title -->
+<div>
+  <h1>Tasking</h1>
+  <p>We have set up GitHub project pages for each department. This allows us to efficiently organize the various tasks we have within each department and its current status (Todo, In Progress, or Done).</p>
+</div>
+
+<!-- Table with project page links -->
+<div class="table table-responsive">
+  <table class="table table-bordered table-fixed" id="tasking">
+    <thead style="font-size: medium">
+    <tr>
+      <th scope="col">Operations</th>
+      <th scope="col">Research</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://github.com/orgs/UHM-SCADA-Lab/projects/3">Network</a></td>
+        <td><a href="https://github.com/orgs/UHM-SCADA-Lab/projects/6">ML Curricula</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/orgs/UHM-SCADA-Lab/projects/2">System Admin</a></td>
+        <td><a href="https://github.com/orgs/UHM-SCADA-Lab/projects/7">HCI</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/orgs/UHM-SCADA-Lab/projects/1">Knowledge Management</a></td>
+        <td><a href="https://github.com/orgs/UHM-SCADA-Lab/projects/8">Database</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/orgs/UHM-SCADA-Lab/projects/4">SNMP/NOC</a></td>
+        <td><a href="https://github.com/orgs/UHM-SCADA-Lab/projects/9">Red Team/SEL</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/orgs/UHM-SCADA-Lab/projects/5">sFlow & SDN</a></td>
+        <td><a href="https://github.com/orgs/UHM-SCADA-Lab/projects/10">Logstash</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Footer -->
+<div id="footer"></div>
+
+</body>
+</html>

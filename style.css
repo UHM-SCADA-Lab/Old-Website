@@ -141,3 +141,7 @@ pre {
   margin-left: 100px;
   margin-top: 25px;
 }
+
+#tasking {
+  table-layout: fixed;
+}
