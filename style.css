@@ -70,6 +70,11 @@ p {
   padding-right: 10px;
   font-size: medium;
   text-decoration-line: none;
+  color: black;
+}
+
+.footer-list:hover {
+  color: #024731;
 }
 
 .department-grid {
@@ -144,4 +149,12 @@ pre {
 
 #tasking {
   table-layout: fixed;
+}
+
+.listLink {
+  color: black;
+}
+
+.listLink:hover {
+  color: #024731;
 }
