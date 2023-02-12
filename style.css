@@ -158,3 +158,8 @@ pre {
 .listLink:hover {
   color: #024731;
 }
+
+.header {
+  text-align: center;
+  padding-left: 0px;
+}
