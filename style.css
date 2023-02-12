@@ -68,7 +68,8 @@ p {
 
 .footer-list {
   padding-right: 10px;
-  font-size: small;
+  font-size: medium;
+  text-decoration-line: none;
 }
 
 .department-grid {
@@ -134,4 +135,9 @@ pre {
   align-items: center;
   padding-bottom: 50px;
   padding-left: 100px;
+}
+
+.video {
+  margin-left: 100px;
+  margin-top: 25px;
 }
