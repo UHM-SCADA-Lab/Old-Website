@@ -218,6 +218,7 @@
   </table>
 </div>
 
+
 <!-- Packets -->
 <div class="table table-responsive">
   <table class="table table-sm table-striped table-bordered">
@@ -243,6 +244,35 @@
     <tr>
       <th scope="row">Ethernet Interface Counter</th>
       <td>52</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<h4>Documentation Entries</h4>
+<div class="table table-responsive">
+  <table class="table table-sm table-striped table-bordered">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Entry</th>
+      <th scope="col">Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Chase</td>
+      <td>I copied John's code for parsing sFlow packets onto
+        the sFlow Rasberry Pi. The code is "control.py" in
+        "/home/pi/git-repos/packet_parser_program/". I put "if" statements
+        in place of a match case function, because
+        an older version of python on the Pi does not support it. I
+        wrote for the code to only download MAC addresses and other info
+        if they are not already on the Pi. I tried to make the data input
+        the live sFlow packets coming in from the network switch, but there
+        is a datatype error. I will start to work on Andy's and my
+        packet parser instead of tyring to implement John's.</td>
+      <td>2/14/2023</td>
     </tr>
     </tbody>
   </table>
