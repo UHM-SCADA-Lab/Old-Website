@@ -20,7 +20,52 @@
 <body>
 <div id="navbar"></div>
 <div>
-<h1>Github Tutorial</h1>
+  <div class= "list">
+<h1 id = "git">Github Tutorial</h1>
+    <h2 id="git">How to set up github</h2>
+  <ol>
+    <li>Create a repo</li>
+      <ol>
+        <li>Go to profile</li>
+        <li>Go to your repository</li>
+        <li>click on new</li>
+        <li>Modify to how you want. remember to add README file.</li>
+        <li>If you haven't already make sure you create a token so you can log in to your account on pi. </li>
+        <ol>
+          <li>click on profile</li>
+          <li>Go to developer settings</li>
+          <li>Go to Personal Access tokens</li>
+          <li>Click on tokens (classic)</li>
+          <li>Generate a new token(MAKE SURE TO SAVE IT SOMEWHERE)</li>
+        </ol>
+      </ol>
+    <h2 id="git">How to set up your repo on pi </h2>
+      <ol>
+        <li>Now that you set up your repo you want to clone it to the pi</li>
+        <li>Make sure git is installed on pi(sudo apt install git)</li>
+        <li>Add: git config --global user.name "Github_username"</li>
+        <li>Add: git config --global user.email "Github_Email"</li>
+        <li>git clone "git@github.com:repo-url" </li>
+          <ol>
+            <li>To clone from repo to pi on the repo click the green "<> code" button. Clone SSH and copy the link </li>
+          </ol>
+        <li>you may have to log in and input your token for your password</li>
+        <li>you should have the repo on the pi now</li>
+        <li>To make changes and push to repo</li>
+        <ol>
+          <li>git add . (adds all new changes)</li>
+          <li>git status   (this checks the new things being added/deleted)</li>
+          <li>git commit -m "type any new changes here"</li>
+          <li>git push (pushes all changes and commit to repo. You wil have to sign in and enter token)</li>
+          <li>All new changes should be on github repo now </li>
+          <li>If any new changes are added on repo but not on the pi</li>
+          <li>git pull   (pulls all new changes from the repo to pi)</li>
+        </ol>
+      </ol>
+  </ol>
+  </div>
+
+
 </div>
 <div id="footer"></div>
 </body>
