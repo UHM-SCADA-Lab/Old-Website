@@ -68,7 +68,13 @@ p {
 
 .footer-list {
   padding-right: 10px;
-  font-size: small;
+  font-size: medium;
+  text-decoration-line: none;
+  color: black;
+}
+
+.footer-list:hover {
+  color: #024731;
 }
 
 .department-grid {
@@ -134,4 +140,26 @@ pre {
   align-items: center;
   padding-bottom: 50px;
   padding-left: 100px;
+}
+
+.video {
+  margin-left: 100px;
+  margin-top: 25px;
+}
+
+#tasking {
+  table-layout: fixed;
+}
+
+.listLink {
+  color: black;
+}
+
+.listLink:hover {
+  color: #024731;
+}
+
+.header {
+  text-align: center;
+  padding-left: 0px;
 }
