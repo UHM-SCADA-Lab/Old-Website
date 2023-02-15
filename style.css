@@ -4,26 +4,26 @@
   vertical-align: bottom;
 }
 
-h1 {
+body {
   font-family: "Helvetica Neue";
+}
+
+h1 {
   padding-left: 50px;
   padding-top: 50px;
   padding-bottom: 20px;
   color: #024731;
 }
 
-h2 {
-  font-family: "Helvetica Neue";
-  padding-left: 100px;
+h2, h3, h4 {
+  padding-left: 75px;
   padding-top: 10px;
 }
 
-h3, h4, h5, h6 {
-  font-family: "Helvetica Neue";
+h5, h6 {
   padding-left: 100px;
   padding-top: 10px;
 }
-
 
 p {
   font-family: "Helvetica Neue";
