@@ -270,9 +270,19 @@
         wrote for the code to only download MAC addresses and other info
         if they are not already on the Pi. I tried to make the data input
         the live sFlow packets coming in from the network switch, but there
-        is a datatype error. I will start to work on Andy's and my
+        is a datatype error. I will start to work on Andee's and my
         packet parser instead of tyring to implement John's.</td>
       <td>2/14/2023</td>
+    </tr>
+    <tr>
+      <td>Chase</td>
+      <td>I am working on finishing the parser Andee and I started last semester.
+      We only need to add functions to parse, in order of priority, TCP, ICMPv6, and ARP headers.
+        Mark said we don't need too much information from ICMP. He wants our parser to say that there
+        is an ICMP header. So anytime there is an ICMP header, the parser will just print that ICMP
+        was detected. We use Wireshark as a reference for our code("blob(1).pcap" -> line 23 for ARP,
+        "blob.pcap" -> line 11 for ICMPv6, and "blob.pcap" -> line 23 for TCP).</td>
+      <td>2/16/2023</td>
     </tr>
     </tbody>
   </table>
