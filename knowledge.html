@@ -59,8 +59,14 @@
 
 <!-- Code Skeleton for new page -->
 <h5><strong>Creating a new page for the website</strong></h5>
-<p>To add a new page to the website, a new HTML file must be created within the appropriate folder in <code>DepartmentPages</code>. For example, the page for the ML Curricula's zero trust documentation is stored at <code>DepartmentPages/MachineLearning/zero-trust.html</code>.</p>
+<p><strong><u>BEFORE ADDING ANY CHANGES, PLEASE MAKE SURE YOUR FORK IS UP TO DATE WITH THE MAIN REPOSITORY.</u></strong> This ensures that there will be minimal merge conflicts when the webmaster approves your updates.</p>
+<p>To ensure that your fork is up to date, click <em>Sync fork</em> on your fork's Github page to retrieve any changes from the main repo to your fork.</p>
+<img src="Media/syncfork.png" class="w-75 pic"/>
+<p>On Github Desktop, open your forked repository and make sure to click <em>Fetch origin</em> (or <em>Fetch upstream</em>, depending on your setup). This will update your local copy of the repository with all the latest changes.</p>
+<img src="Media/fetch.png" class="w-75 pic"/>
+<p>Once you have verified that your fork and local copy are up to date, you can begin to make edits. To add a new page to the website, a new HTML file must be created within the appropriate folder in <code>DepartmentPages</code>. For example, the page for the ML Curricula's zero trust documentation is stored at <code>DepartmentPages/MachineLearning/zero-trust.html</code>.</p>
 <p>Each page file should use the same header structure that has been established for all the pages on the website. This will, among other things, allow for the page to have the same formatting as the pre-existing pages and import key components, such as the navigation bar and footer.</p>
+<p>One option that you have is to copy and paste the HTML template below into your new file.</p>
 <div class="code">
   <pre class="pre-scrollable">
   <code>
@@ -98,6 +104,12 @@
 </pre>
 </div>
 
+<p>You also have the option to import the template into your Intellij settings, which will allow you to easily create new HTML files with the code structure already included by default.</p>
+<p>Download the settings ZIP file <a href="https://drive.google.com/file/d/140bonyCJBxi3A24aI_PW3Vv5oDC_JAUD/view?usp=sharing">here</a>, which includes our HTML template. In order to import it to Intellij, go to File > Manage IDE Settings > Import Settings... and select the ZIP file you just downloaded. You should see a prompt like this. Make sure <em>File Templates (schemes)</em> is checked, as shown below.</p>
+<img src="Media/template.png" class="w-75 pic"/>
+<p>Intellij will then prompt you to restart the application for the changes to take effect.</p>
+<p>Once that process is complete, you can now add new files to the repository with the template! Add a new file as shown below by selecting the SCADA HTML file type. You should then see a new file with the template code automatically included.</p>
+<img src="Media/newTemplateFile.PNG" class="w-75 pic"/>
 <!-- HTML Link tutorial -->
 <h5><strong>Creating a link in HTML</strong></h5>
 <div class="pre code">
@@ -112,7 +124,6 @@
     </code>
   </pre>
 </div>
-
 <hr class="bg border-1 border-top border-dark">
 
 <div class="table table-responsive">

@@ -38,7 +38,7 @@ p {
   padding-left: 100px;
   padding-right: 100px;
   padding-top: 10px;
-  font-size: large;
+  font-size: medium;
 }
 
 .table {
@@ -167,9 +167,15 @@ pre {
 .code {
   padding-left: 100px;
   padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #git{
   color:darkgreen;
   margin-left:-100px;
+}
+
+.pic {
+  padding-left: 100px;
+  padding-bottom: 10px;
 }
