@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+    $(function(){
+      $("#navbar").load("../../navbar.html");
+      $("#footer").load("../../footer.html");
+    });
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../style.css"/>
+</head>
+<body>
+
+<!-- Navbar -->
+<div id="navbar"></div>
+
+<!-- Your page code goes here -->
+<h1>How to set up DNS Lookup</h1>
+<h2>On windows directory side:</h2>
+<ol>
+ <li> Open Server Manager.</li>
+  <li>On the top left under “Tools”, click on DNS.</li>
+  <li>On the left panel, right click on  WIN-SURF > Forward Lookup Zones > SCADA.lab</li>
+  <li> Click on “New Host (A or AAAA)...</li>
+  <li>Under the “Name” parameter, enter the hostname of the device you wish to add.</li>
+  <li>Under “IP address”, enter the IP address of the device you wish to add. </li>
+  <li>Check the “Create associated (PTR) record”.</li>
+  <li>When you’re done, click on “Add Host”.</li>
+</ol>
+<h2>On raspberry pi side:</h2>
+<ol>
+<li>Setting up a raspberry pi to use the SCADA.lab DNS server.</li>
+<li>In the pi terminal enter the command: sudo nano /etc/dhcpcd.conf</li>
+<li>This opens the nano text editor.  Go to the bottom of the file and add the line:</li>
+<li>static domain_name_servers=10.1.1.8</li>
+<li>Exit and save the file by pressing ctrl + x, then y, then enter.</li>
+<li>Restart the service with the command:</li>
+<li>sudo service dhcpcd restart</li>
+<li>The pi will use the DNS server now.</li>
+</ol>
+<!-- Footer -->
+<div id="footer"></div>
+
+</body>
+</html>
