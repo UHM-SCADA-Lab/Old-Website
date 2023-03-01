@@ -4,33 +4,41 @@
   vertical-align: bottom;
 }
 
-h1 {
+body {
   font-family: "Helvetica Neue";
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: #024731;
+}
+
+h1 {
   padding-left: 50px;
   padding-top: 50px;
   padding-bottom: 20px;
   color: #024731;
 }
 
-h2 {
-  font-family: "Helvetica Neue";
-  padding-left: 100px;
-  padding-top: 10px;
+h2, h3 {
+  padding-left: 75px;
+  padding-top: 25px;
 }
 
-h3, h4, h5, h6 {
-  font-family: "Helvetica Neue";
+h4, h5, h6 {
   padding-left: 100px;
-  padding-top: 10px;
+  padding-top: 25px;
 }
-
 
 p {
   font-family: "Helvetica Neue";
   padding-left: 100px;
-  padding-top: 25px;
   padding-right: 100px;
-  font-size: large;
+  padding-top: 10px;
+  font-size: medium;
 }
 
 .table {
@@ -151,19 +159,23 @@ pre {
   table-layout: fixed;
 }
 
-.listLink {
-  color: black;
-}
-
-.listLink:hover {
-  color: #024731;
-}
-
-.header {
+.homepage {
   text-align: center;
   padding-left: 0px;
 }
+
+.code {
+  padding-left: 100px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 #git{
   color:darkgreen;
   margin-left:-100px;
+}
+
+.pic {
+  padding-left: 100px;
+  padding-bottom: 10px;
 }
