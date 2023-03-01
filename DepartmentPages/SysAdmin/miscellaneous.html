@@ -3,6 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Miscellaneous</title>
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+    $(function(){
+      $("#navbar").load("../../navbar.html");
+      $("#footer").load("../../footer.html");
+    });
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -10,14 +17,17 @@
   <link rel="stylesheet" href="../../style.css"/>
 </head>
 <body>
+<!-- Navbar -->
+<div id="navbar"></div>
 
 <h1>Miscellaneous</h1>
 <a class="link" href="../../sysadmin.html">Back to Linux Page</a>
 <hr class="bg border-1 border-top border-dark">
 
 <h2>Configure NTP Server</h2>
+<h3>Useful Commands</h3>
+
 <div class="table">
-  <h2>Useful Commands</h2>
   <table class="table">
     <thead>
     <tr>
@@ -66,5 +76,7 @@
   </ul>
 </div>
 
+<!-- Footer -->
+<div id="footer"></div>
 </body>
 </html>

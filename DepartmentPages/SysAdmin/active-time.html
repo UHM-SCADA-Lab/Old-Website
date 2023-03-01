@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>WIN-SURF Time</title>
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script>
     $(function(){
@@ -20,22 +20,25 @@
 <div id="navbar"></div>
 <h1>Getting time from WIN-SURF using timedatectl</h1>
 <h2> WARNING: dont use ntp(its outdated)</h2>
-<ol>
-<li>Open a Terminal window on your Raspberry Pi.</li>
-  <li>Type: “sudo nano /etc/systemd/timesyncd.conf”</li>
-  <li>In the "systemd-timesyncd.conf" file, uncomment the "NTP" line by removing the "#" character at the beginning of the line.</li>
-  <li>Replace the default NTP server address with the IP address or hostname of your Windows time server (10.1.1.8).</li>
-  <ul>
-  <li>For example: NTP= win-surf.scada.lab</li>
-  </ul>
-  <li>Save the changes to the file and exit the editor.</li>
-  <li>Type: “sudo systemctl restart systemd-timesyncd.service”</li>
-  <li>To verify it’s working, type: “sudo systemctl status systemd-timesyncd.service”</li>
-  <ul>
-    <li>If working, it should show active (running) in green.</li>
-  </ul>
-  <li>For additional verification, type: “timedatectl status”.</li>
-</ol>
+<div class="list">
+  <ol>
+    <li>Open a Terminal window on your Raspberry Pi.</li>
+    <li>Type: “sudo nano /etc/systemd/timesyncd.conf”</li>
+    <li>In the "systemd-timesyncd.conf" file, uncomment the "NTP" line by removing the "#" character at the beginning of the line.</li>
+    <li>Replace the default NTP server address with the IP address or hostname of your Windows time server (10.1.1.8).</li>
+    <ul>
+      <li>For example: NTP= win-surf.scada.lab</li>
+    </ul>
+    <li>Save the changes to the file and exit the editor.</li>
+    <li>Type: “sudo systemctl restart systemd-timesyncd.service”</li>
+    <li>To verify it’s working, type: “sudo systemctl status systemd-timesyncd.service”</li>
+    <ul>
+      <li>If working, it should show active (running) in green.</li>
+    </ul>
+    <li>For additional verification, type: “timedatectl status”.</li>
+  </ol>
+</div>
+
 <div id="footer"></div>
 </body>
 

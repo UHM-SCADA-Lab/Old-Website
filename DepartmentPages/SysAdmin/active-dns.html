@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>DNS Lookup</title>
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script>
     $(function(){
@@ -24,28 +24,34 @@
 <!-- Your page code goes here -->
 <h1>How to set up DNS Lookup</h1>
 <h2>On windows directory side:</h2>
-<ol>
- <li> Open Server Manager.</li>
-  <li>On the top left under “Tools”, click on DNS.</li>
-  <li>On the left panel, right click on  WIN-SURF > Forward Lookup Zones > SCADA.lab</li>
-  <li> Click on “New Host (A or AAAA)...</li>
-  <li>Under the “Name” parameter, enter the hostname of the device you wish to add.</li>
-  <li>Under “IP address”, enter the IP address of the device you wish to add. </li>
-  <li>Check the “Create associated (PTR) record”.</li>
-  <li>When you’re done, click on “Add Host”.</li>
-</ol>
+<div class="list">
+  <ol>
+    <li> Open Server Manager.</li>
+    <li>On the top left under “Tools”, click on DNS.</li>
+    <li>On the left panel, right click on  WIN-SURF > Forward Lookup Zones > SCADA.lab</li>
+    <li> Click on “New Host (A or AAAA)...</li>
+    <li>Under the “Name” parameter, enter the hostname of the device you wish to add.</li>
+    <li>Under “IP address”, enter the IP address of the device you wish to add. </li>
+    <li>Check the “Create associated (PTR) record”.</li>
+    <li>When you’re done, click on “Add Host”.</li>
+  </ol>
+</div>
+
 <h2>On raspberry pi side:</h2>
-<ol>
-<li>Setting up a raspberry pi to use the SCADA.lab DNS server.</li>
-<li>In the pi terminal enter the command: sudo nano /etc/dhcpcd.conf</li>
-<li>This opens the nano text editor.  Go to the bottom of the file and add the line:</li>
-  <li>copy this line to the bottom of the page</li>
-  <li>static domain_name_servers=win-surf.scada.lab</li>
-<li>Exit and save the file by pressing ctrl + x, then y, then enter.</li>
-<li>Restart the service with the command:</li>
-<li>sudo service dhcpcd restart</li>
-<li>The pi will use the DNS server now.</li>
-</ol>
+<div class="list">
+  <ol>
+    <li>Setting up a raspberry pi to use the SCADA.lab DNS server.</li>
+    <li>In the pi terminal enter the command: sudo nano /etc/dhcpcd.conf</li>
+    <li>This opens the nano text editor.  Go to the bottom of the file and add the line:</li>
+    <li>copy this line to the bottom of the page</li>
+    <li>static domain_name_servers=win-surf.scada.lab</li>
+    <li>Exit and save the file by pressing ctrl + x, then y, then enter.</li>
+    <li>Restart the service with the command:</li>
+    <li>sudo service dhcpcd restart</li>
+    <li>The pi will use the DNS server now.</li>
+  </ol>
+</div>
+
 <!-- Footer -->
 <div id="footer"></div>
 

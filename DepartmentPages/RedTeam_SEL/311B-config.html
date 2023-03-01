@@ -3,6 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>SEL 311B Configuration</title>
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+    $(function(){
+      $("#navbar").load("../../navbar.html");
+      $("#footer").load("../../footer.html");
+    });
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -10,6 +17,8 @@
   <link rel="stylesheet" href="../../style.css"/>
 </head>
 <body>
+<!-- Navbar -->
+<div id="navbar"></div>
 
 <h1>SEL 311B Configuration</h1>
 <a class="link" href="../../redteam_sel.html">Back to SEL Page</a>
@@ -26,19 +35,13 @@
 
 <!-- Buttons -->
 <p class="text-center">
-  <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
-    Access Information
-  </button>
-  <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
-    LED Circuit
-  </button>
-  <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
-    Pulse LED
-  </button>
+  <a class="btn btn-dark" role="button" href="#accessInfo">Access Information</a>
+  <a class="btn btn-dark" role="button" href="#ledCircuit">LED Circuit</a>
+  <a class="btn btn-dark" role="button" href="#pulse">Pulse LED</a>
 </p>
 
 <!-- Access Information -->
-<div class="collapse" id="collapseExample1">
+<h2 id="accessInfo">Access Information</h2>
   <div class="card card-body">
     <p>The 311B can be accessed using via Serial Port F using an RS-232 cable. Using a terminal source emulator such as PuTTY or the AcSELerator QuickSet application on the lab computer.</p>
     <div class="list">
@@ -71,10 +74,9 @@
       </ul>
     </div>
   </div>
-</div>
 
+<h2 id="ledCircuit">LED Circuit</h2>
 <!-- LED Circuit -->
-<div class="collapse" id="collapseExample2">
   <div class="card card-body text-center">
     <figure class="figure">
       <img src="311_LEDCircuit.drawio.png" class="figure-img img-fluid" alt=""/>
@@ -85,10 +87,9 @@
       <figcaption class="figure-caption">Circuit in Lab <br> When the LED is on, using the PUL OUT107 5 command turns it off for 5 seconds.</figcaption>
     </figure>
   </div>
-</div>
 
+<h2 id="pulse">Pulse LED</h2>
 <!-- Pulse LED -->
-<div class="collapse" id="collapseExample3">
   <div class="card card-body">
   <h2>Pulse LED Information</h2>
   <div class="list">
@@ -116,7 +117,8 @@
     </ol>
   </div>
   </div>
-</div>
 
+<!-- Footer -->
+<div id="footer"></div>
 </body>
 </html>
