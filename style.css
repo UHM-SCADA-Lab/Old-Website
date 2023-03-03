@@ -34,7 +34,6 @@ h4, h5, h6 {
 }
 
 p {
-  font-family: "Helvetica Neue";
   padding-left: 100px;
   padding-right: 100px;
   padding-top: 10px;
@@ -54,6 +53,8 @@ p {
   padding-left: 200px;
   padding-right: 200px;
   padding-bottom: 100px;
+  font-size: medium;
+
 }
 
 .my-image-div{
