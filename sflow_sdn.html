@@ -285,8 +285,9 @@
       We only need to add functions to parse, in order of priority, TCP, ICMPv6, and ARP headers.
         Mark said we don't need too much information from ICMP. He wants our parser to say that there
         is an ICMP header. So anytime there is an ICMP header, the parser will just print that ICMP
-        was detected. We use Wireshark as a reference for our code("blob(1).pcap" -> line 23 for ARP,
-        "blob.pcap" -> line 11 for ICMPv6, and "blob.pcap" -> line 23 for TCP).</td>
+        was detected. We use Wireshark as a reference for our code("blob(1).pcap", frame 23 for ARP,
+        "blob(1).pcap", frame 11 for ICMP, "blog.pcap", frame 11 for ICMPv6, and "blog.pcap", frame 23 for
+        TCP).</td>
       <td>2/16/2023</td>
     </tr>
     <tr>
