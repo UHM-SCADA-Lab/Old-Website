@@ -280,8 +280,9 @@
       We only need to add functions to parse, in order of priority, TCP, ICMPv6, and ARP headers.
         Mark said we don't need too much information from ICMP. He wants our parser to say that there
         is an ICMP header. So anytime there is an ICMP header, the parser will just print that ICMP
-        was detected. We use Wireshark as a reference for our code("blob(1).pcap" -> line 23 for ARP,
-        "blob.pcap" -> line 11 for ICMPv6, and "blob.pcap" -> line 23 for TCP).</td>
+        was detected. We use Wireshark as a reference for our code("blob(1).pcap", frame 23 for ARP,
+        "blob(1).pcap", frame 11 for ICMP, "blog.pcap", frame 11 for ICMPv6, and "blog.pcap", frame 23 for
+        TCP).</td>
       <td>2/16/2023</td>
     </tr>
     <tr>
@@ -299,6 +300,12 @@
       will ask Mark what he task he wants us to do next. I assume we'll have to tell our parser to
       record the parsed data into a database.</td>
       <td>2/28/2023</td>
+    </tr>
+    <tr>
+      <td>Chase</td>
+      <td>The parser is complete. The last thing I added was a packet parser for ICMPv6. I just have to verify that it completely parses all the information we
+      want without any errors. It's possible that there are some unprecedented sampled packet headers for which I have to code. But if there are no errors the code should be complete. </td>
+      <td>3/21/2023</td>
     </tr>
     </tbody>
   </table>
